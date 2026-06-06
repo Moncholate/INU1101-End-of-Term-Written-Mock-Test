@@ -778,17 +778,13 @@ function trackPlay(audioId) {
   if(!playCounts[audioId]) playCounts[audioId]=0;
   playCounts[audioId]++;
   const counter=document.getElementById('counter_'+audioId);
-  const audio=document.getElementById(audioId);
   const count=playCounts[audioId];
-  if(count>=2){
-    counter.textContent='⚠️ Límite de 2 reproducciones alcanzado';
-    counter.className='play-counter limit';
-    audio.addEventListener('ended',()=>{
-      audio.controls=false; audio.style.opacity='0.4'; audio.style.pointerEvents='none';
-    },{once:true});
-  } else if(count===1){
+  if(count===1){
     counter.textContent='Plays: 1 / 2 — 1 reproducción restante';
     counter.className='play-counter warning';
+  } else if(count>=2){
+    counter.textContent=`⚠️ Plays: ${count} — límite de práctica superado`;
+    counter.className='play-counter limit';
   }
 }
 
