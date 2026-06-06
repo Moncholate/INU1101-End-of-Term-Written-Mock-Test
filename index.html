@@ -710,6 +710,8 @@ audio { width:100%; border-radius:8px; margin-bottom:8px; }
         <button class="filter-tab" onclick="filterFeedback('listening',event)">🎧 Listening</button>
         <button class="filter-tab" onclick="filterFeedback('reading',event)">📖 Reading</button>
         <button class="filter-tab" onclick="filterFeedback('writing',event)">✍️ Writing</button>
+        <button class="filter-tab" onclick="filterFeedback('correct',event)">✓ Correctas</button>
+        <button class="filter-tab" onclick="filterFeedback('incorrect',event)">✗ Incorrectas</button>
       </div>
 
       <div id="feedbackContent"></div>
@@ -926,7 +928,7 @@ function buildFeedback(autoLA,autoLB,autoRA,autoRB,autoWriting) {
     const ok=student===correct;
     const studentText=student?LA_OPTIONS[id]['abcd'.indexOf(student)]:'(sin respuesta)';
     const correctText=LA_OPTIONS[id]['abcd'.indexOf(correct)];
-    laHTML+=`<div class="feedback-item">
+    laHTML+=`<div class="feedback-item" data-result="${ok?'correct':'incorrect'}">
       <div class="fi-label">${LA_Q[i]} <span class="tag ${ok?'correct-tag':'incorrect-tag'}">${ok?'✓ Correcto':'✗ Incorrecto'}</span></div>
       <div class="student-ans">Tu respuesta: <strong>${student?student+') '+studentText:'(sin respuesta)'}</strong></div>
       ${!ok?`<div class="correct-ans">✓ Respuesta correcta: ${correct}) ${correctText}</div>`:''}
@@ -942,7 +944,7 @@ function buildFeedback(autoLA,autoLB,autoRA,autoRB,autoWriting) {
     const student=g(id);
     const correct=LB_KEYS[id];
     const ok=student===correct;
-    lbHTML+=`<div class="feedback-item">
+    lbHTML+=`<div class="feedback-item" data-result="${ok?'correct':'incorrect'}">
       <div class="fi-label">Ítem ${i+1} — ${LB_LABELS[i]} <span class="tag ${ok?'correct-tag':'incorrect-tag'}">${ok?'✓ Correcto':'✗ Incorrecto'}</span></div>
       <div class="student-ans">Tu respuesta: <strong>${student||'(sin respuesta)'}</strong></div>
       ${!ok?`<div class="correct-ans">✓ Respuesta correcta: ${correct}</div>`:''}
@@ -959,7 +961,7 @@ function buildFeedback(autoLA,autoLB,autoRA,autoRB,autoWriting) {
     const student=g('ra'+i);
     const accepted=RA_KEYS['ra'+i];
     const ok=accepted.some(ans=>norm(student)===ans||norm(student).includes(ans)||ans.includes(norm(student)));
-    raHTML+=`<div class="feedback-item">
+    raHTML+=`<div class="feedback-item" data-result="${ok?'correct':'incorrect'}">
       <div class="fi-label">Q${i} — ${RA_STEMS[i-1]} <span class="tag ${ok?'correct-tag':'incorrect-tag'}">${ok?'✓ Correcto':'✗ Incorrecto'}</span></div>
       <div class="student-ans">Tu respuesta: <strong>${student||'(sin respuesta)'}</strong></div>
       ${!ok?`<div class="correct-ans">✓ Respuesta modelo: ${RA_MODEL[i-1]}</div>`:''}
@@ -982,7 +984,7 @@ function buildFeedback(autoLA,autoLB,autoRA,autoRB,autoWriting) {
     const student=g(id);
     const correct=RB_KEYS[id];
     const ok=student===correct;
-    rbHTML+=`<div class="feedback-item">
+    rbHTML+=`<div class="feedback-item" data-result="${ok?'correct':'incorrect'}">
       <div class="fi-label">Párrafo ${RB_PARA[i]} <span class="tag ${ok?'correct-tag':'incorrect-tag'}">${ok?'✓ Correcto':'✗ Incorrecto'}</span></div>
       <div class="student-ans">Tu respuesta: Pregunta <strong>${student||'(sin respuesta)'}</strong></div>
       ${!ok?`<div class="correct-ans">✓ Respuesta correcta: Pregunta ${correct}</div>`:''}
@@ -1027,11 +1029,26 @@ function buildFeedback(autoLA,autoLB,autoRA,autoRB,autoWriting) {
 }
 
 // ── FILTER TABS ──
-function filterFeedback(section, event) {
+function filterFeedback(filter, event) {
   document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
   event.target.classList.add('active');
-  document.querySelectorAll('.feedback-part').forEach(p=>{
-    p.style.display=(section==='all'||p.dataset.section===section)?'block':'none';
+  document.querySelectorAll('.feedback-part').forEach(part=>{
+    if(filter==='all'){part.style.display='block';return;}
+    // Section filter
+    if(['listening','reading','writing'].includes(filter)){
+      part.style.display=part.dataset.section===filter?'block':'none';return;
+    }
+    // Correct/incorrect filter — hide parts with no matching items
+    if(filter==='correct'||filter==='incorrect'){
+      const items=part.querySelectorAll('.feedback-item[data-result]');
+      let hasMatch=false;
+      items.forEach(item=>{
+        const match=item.dataset.result===filter;
+        item.style.display=match?'block':'none';
+        if(match) hasMatch=true;
+      });
+      part.style.display=hasMatch?'block':'none';
+    }
   });
 }
 
