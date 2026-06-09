@@ -3,698 +3,355 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mock Test — INU1101 Inglés Básico I · End of Term</title>
+<title>Mock Test - INU1101 Ingles Basico I - End of Term</title>
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600;700&display=swap');
-:root {
-  --primary: #4f46e5;
-  --primary-light: #818cf8;
-  --secondary: #7c3aed;
-  --accent: #06b6d4;
-  --danger: #ef4444;
-  --success: #10b981;
-  --warning: #f59e0b;
-  --bg: #f1f5f9;
-  --card: #ffffff;
-  --text: #1e293b;
-  --muted: #64748b;
-  --border: #e2e8f0;
-}
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #06b6d4 100%);
-  min-height: 100vh;
-  padding: 30px 15px;
-  color: var(--text);
-}
-.container {
-  background: var(--card);
-  border-radius: 20px;
-  box-shadow: 0 25px 60px rgba(79,70,229,0.25);
-  max-width: 920px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-.header {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
-  padding: 40px;
-  text-align: center;
-  color: white;
-}
-.header .logo { font-size:.75em; letter-spacing:4px; text-transform:uppercase; opacity:.8; margin-bottom:12px; }
-.header h1 { font-family:'DM Serif Display',serif; font-size:2.2em; margin-bottom:8px; line-height:1.2; }
-.header p { opacity:.85; font-size:1em; font-weight:300; }
-.score-pills { display:flex; justify-content:center; gap:12px; margin-top:20px; flex-wrap:wrap; }
-.score-pill { background:rgba(255,255,255,0.2); border:1px solid rgba(255,255,255,0.3); border-radius:50px; padding:6px 18px; font-size:.85em; font-weight:500; }
-.content { padding:40px; }
-.info-box { background:#eff6ff; border:1px solid #bfdbfe; border-left:4px solid var(--primary); border-radius:10px; padding:18px 22px; margin-bottom:30px; font-size:.9em; line-height:1.7; color:#1e40af; }
-.info-box ul { padding-left:18px; margin-top:6px; }
-.info-box li { margin-bottom:3px; }
-.es-toggle { display:inline-block; margin-top:8px; font-size:.82em; color:var(--primary); cursor:pointer; border:none; background:none; font-family:'DM Sans',sans-serif; text-decoration:underline; padding:0; }
-.es-text { display:none; margin-top:8px; background:#f0f4ff; border-radius:8px; padding:10px 14px; font-size:.88em; color:#3730a3; line-height:1.6; }
-#savedBanner { background:#ecfdf5; border:1px solid #6ee7b7; border-radius:10px; padding:12px 18px; margin-bottom:20px; font-size:.88em; color:#065f46; display:none; align-items:center; gap:10px; }
-#savedBanner button { margin-left:auto; background:none; border:1px solid #10b981; color:#065f46; padding:4px 12px; border-radius:6px; cursor:pointer; font-size:.85em; white-space:nowrap; }
-.name-block { background:#f8fafc; border:1px solid var(--border); border-radius:12px; padding:20px 24px; margin-bottom:35px; }
-.name-block label { display:block; font-weight:600; margin-bottom:8px; color:var(--primary); font-size:.95em; }
-.name-block input { width:100%; padding:10px 14px; border:2px solid var(--border); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:1em; transition:border-color .2s; }
-.name-block input:focus { outline:none; border-color:var(--primary); }
-.section { margin-bottom:40px; border-radius:14px; overflow:hidden; border:1px solid var(--border); }
-.section-header { padding:18px 24px; display:flex; align-items:center; gap:12px; }
-.section-header.listening { background:linear-gradient(135deg,#ede9fe,#ddd6fe); border-bottom:1px solid #c4b5fd; }
-.section-header.reading   { background:linear-gradient(135deg,#eff6ff,#dbeafe); border-bottom:1px solid #93c5fd; }
-.section-header.writing   { background:linear-gradient(135deg,#fff1f2,#ffe4e6); border-bottom:1px solid #fca5a5; }
-.section-header .icon { font-size:1.5em; }
-.section-header h2 { font-family:'DM Serif Display',serif; font-size:1.4em; color:var(--text); }
-.section-header .pts { margin-left:auto; background:white; border-radius:20px; padding:4px 14px; font-size:.82em; font-weight:600; color:var(--primary); white-space:nowrap; }
-.section-body { padding:28px; }
-.part-header { font-weight:700; font-size:1em; color:var(--secondary); text-transform:uppercase; letter-spacing:1px; margin-bottom:10px; padding-bottom:8px; border-bottom:2px dashed #e9d5ff; }
-.part-instructions { background:#fafafa; border-radius:8px; padding:12px 16px; font-size:.9em; color:var(--muted); margin-bottom:18px; line-height:1.6; }
-.part-divider { border:none; border-top:2px dashed var(--border); margin:28px 0; }
-.audio-container { background:linear-gradient(135deg,#f5f3ff,#ede9fe); border:1px solid #c4b5fd; border-radius:12px; padding:18px 22px; margin-bottom:20px; }
-.audio-label { font-weight:600; color:var(--secondary); margin-bottom:10px; font-size:.95em; }
-audio { width:100%; border-radius:8px; margin-bottom:8px; }
-.play-counter { font-size:.82em; font-weight:600; color:var(--muted); background:white; display:inline-block; padding:4px 12px; border-radius:20px; border:1px solid var(--border); transition:color .2s,border-color .2s; }
-.play-counter.warning { color:var(--warning); border-color:var(--warning); }
-.play-counter.limit   { color:var(--danger);  border-color:var(--danger); }
-
-/* MC */
-.mc-grid { display:flex; flex-direction:column; gap:20px; margin-top:10px; }
-.mc-item { background:#fafafa; border:1px solid var(--border); border-radius:10px; padding:16px 18px; }
-.mc-conv-label { font-size:.78em; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--secondary); margin-bottom:6px; }
-.mc-question { font-weight:600; font-size:.93em; margin-bottom:10px; color:var(--text); }
-.mc-options { display:flex; flex-direction:column; gap:6px; }
-.mc-options label { display:flex; align-items:center; gap:10px; padding:9px 13px; border:1px solid var(--border); border-radius:7px; cursor:pointer; font-size:.9em; transition:all .15s; background:white; }
-.mc-options label:hover { border-color:var(--primary-light); background:#f5f3ff; }
-.mc-options input[type="radio"] { accent-color:var(--primary); flex-shrink:0; }
-
-/* Binary choice */
-.binary-grid { display:flex; flex-direction:column; gap:12px; margin-top:10px; }
-.binary-item { display:flex; align-items:center; gap:12px; background:#fafafa; border:1px solid var(--border); border-radius:10px; padding:14px 18px; font-size:.92em; flex-wrap:wrap; }
-.binary-num { font-weight:700; color:var(--secondary); min-width:20px; }
-.binary-label { flex:1; color:var(--text); font-weight:500; }
-.binary-sel { padding:6px 10px; border:2px solid var(--border); border-radius:6px; font-family:'DM Sans',sans-serif; font-size:.9em; font-weight:600; color:var(--text); background:white; cursor:pointer; transition:border-color .2s; }
-.binary-sel:focus { outline:none; border-color:var(--primary); }
-
-/* Reading text */
-.reading-text-box { background:#f8fafc; border:1px solid var(--border); border-radius:12px; padding:22px 26px; margin-bottom:22px; line-height:1.9; font-size:.95em; }
-.reading-text-box h4 { text-align:center; font-family:'DM Serif Display',serif; font-size:1.15em; margin-bottom:14px; color:var(--text); }
-
-/* Reading A fill-in */
-.ra-grid { display:flex; flex-direction:column; gap:10px; margin-top:10px; }
-.ra-row { display:flex; align-items:baseline; gap:8px; background:#fafafa; border:1px solid var(--border); border-radius:8px; padding:12px 16px; font-size:.92em; flex-wrap:wrap; }
-.ra-num { font-weight:700; color:var(--secondary); min-width:22px; }
-.ra-stem { color:var(--text); }
-.ra-input { flex:1; min-width:160px; padding:6px 10px; border:2px solid var(--border); border-radius:6px; font-family:'DM Sans',sans-serif; font-size:.93em; color:var(--text); transition:border-color .2s; }
-.ra-input:focus { outline:none; border-color:var(--primary); }
-
-/* Reading B paragraphs */
-.rb-para-block { background:#f8fafc; border:1px solid var(--border); border-radius:10px; padding:16px 18px; margin-bottom:12px; font-size:.92em; line-height:1.7; }
-.rb-para-num { font-weight:700; color:var(--primary); font-size:.85em; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
-.match-sel { padding:6px 10px; border:2px solid var(--border); border-radius:6px; font-family:'DM Sans',sans-serif; font-size:.93em; font-weight:600; color:var(--text); background:white; cursor:pointer; min-width:60px; transition:border-color .2s; }
-.match-sel:focus { outline:none; border-color:var(--primary); }
-
-/* Writing */
-.writing-guide { margin-bottom:14px; }
-.writing-guide ol { padding-left:20px; font-size:.9em; color:var(--muted); line-height:2; }
-#writingText { width:100%; min-height:200px; padding:14px 18px; border:2px solid var(--border); border-radius:10px; font-family:'DM Sans',sans-serif; font-size:.95em; color:var(--text); resize:vertical; line-height:1.7; transition:border-color .2s; margin-top:12px; }
-#writingText:focus { outline:none; border-color:var(--primary); }
-.word-count-bar { display:flex; align-items:center; gap:10px; margin-top:6px; font-size:.85em; color:var(--muted); }
-#wordCountDisplay { font-weight:700; color:var(--primary); background:var(--bg); padding:3px 10px; border-radius:10px; }
-#wordCountDisplay.ok  { color:var(--success); }
-#wordCountDisplay.low { color:var(--warning); }
-
-/* Gemini Writing block */
-.gemini-block { background:linear-gradient(135deg,#f0fdf4,#ecfdf5); border:1px solid #6ee7b7; border-radius:14px; padding:24px 28px; margin-top:30px; }
-.gemini-block h3 { font-family:'DM Serif Display',serif; font-size:1.2em; color:#065f46; margin-bottom:6px; }
-.gemini-block p { font-size:.88em; color:#047857; margin-bottom:16px; line-height:1.6; }
-.gemini-btn { background:linear-gradient(135deg,#4285F4,#34A853); color:white; border:none; border-radius:10px; padding:11px 22px; font-family:'DM Sans',sans-serif; font-size:.9em; font-weight:600; cursor:pointer; transition:all .2s; display:inline-flex; align-items:center; gap:8px; }
-.gemini-btn:hover { transform:translateY(-1px); box-shadow:0 4px 14px rgba(66,133,244,0.3); }
-.gemini-warn { display:none; margin-top:10px; font-size:.85em; color:#92400e; background:#fffbeb; border:1px solid #fcd34d; border-radius:8px; padding:8px 14px; }
-
-/* Rubric — compact horizontal */
-.rubric-block { margin-top:22px; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
-.rubric-header { background:linear-gradient(135deg,#fff1f2,#ffe4e6); padding:12px 18px; font-weight:700; font-size:.9em; color:#be123c; border-bottom:1px solid #fca5a5; }
-.rubric-item { padding:14px 18px; border-bottom:1px solid var(--border); font-size:.88em; }
-.rubric-item:last-child { border-bottom:none; }
-.rubric-item label { font-weight:600; color:var(--text); margin-bottom:8px; display:block; }
-.rubric-options { display:flex; flex-wrap:wrap; gap:8px; }
-.rubric-options label { font-weight:400; display:flex; align-items:center; gap:5px; background:#f8fafc; border:1px solid var(--border); border-radius:8px; padding:5px 10px; cursor:pointer; transition:all .15s; margin:0; }
-.rubric-options label:hover { border-color:var(--primary); background:#eff6ff; }
-.rubric-options input[type="radio"]:checked + span { font-weight:700; color:var(--primary); }
-.rubric-options input[type="radio"] { accent-color:var(--primary); }
-
-/* Calculate */
-.calculate-btn { width:100%; background:linear-gradient(135deg,#10b981,#059669); color:white; border:none; border-radius:14px; padding:18px; font-family:'DM Sans',sans-serif; font-size:1.05em; font-weight:700; cursor:pointer; margin:30px 0 0; transition:all .2s; letter-spacing:.5px; }
-.calculate-btn:hover { transform:translateY(-2px); box-shadow:0 8px 25px rgba(16,185,129,0.35); }
-
-/* Blank warning */
-#blankWarning { display:none; background:#fffbeb; border:1px solid #fcd34d; border-left:4px solid var(--warning); border-radius:12px; padding:16px 20px; margin-top:16px; font-size:.88em; color:#92400e; line-height:1.6; }
-#blankWarning strong { display:block; margin-bottom:8px; font-size:1em; }
-#blankWarning ul { padding-left:18px; margin:6px 0 10px; }
-#blankWarning ul li { margin-bottom:4px; }
-.blank-link { color:var(--primary); cursor:pointer; text-decoration:underline; font-weight:600; background:none; border:none; font-family:'DM Sans',sans-serif; font-size:1em; padding:0; }
-.blank-link:hover { color:var(--secondary); }
-.dismiss-btn { background:white; border:1px solid var(--warning); color:#92400e; border-radius:8px; padding:6px 14px; font-family:'DM Sans',sans-serif; font-size:.85em; font-weight:600; cursor:pointer; margin-top:4px; }
-
-/* Results */
-#results { display:none; margin-top:30px; }
-.results-card { background:linear-gradient(135deg,#f0fdf4,#ecfdf5); border:1px solid #6ee7b7; border-radius:16px; padding:30px; margin-bottom:24px; }
-.results-card h3 { font-family:'DM Serif Display',serif; font-size:1.5em; color:#065f46; margin-bottom:20px; text-align:center; }
-.score-row { display:flex; justify-content:space-between; align-items:center; padding:10px 0; border-bottom:1px solid #a7f3d0; font-size:.95em; }
-.score-row:last-child { border-bottom:none; font-weight:700; font-size:1.05em; }
-.grade-display { text-align:center; margin-top:20px; padding:20px; background:white; border-radius:12px; border:2px solid #10b981; }
-.grade-display .grade-number { font-family:'DM Serif Display',serif; font-size:3.5em; line-height:1; }
-.grade-display .grade-label { color:var(--muted); font-size:.85em; margin-top:4px; }
-.grade-display .grade-msg { font-size:.9em; margin-top:8px; font-weight:600; color:var(--text); }
-@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
-
-/* Filter tabs */
-.filter-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
-.filter-tab { padding:6px 16px; border-radius:20px; border:2px solid var(--border); background:white; font-family:'DM Sans',sans-serif; font-size:.82em; font-weight:600; cursor:pointer; transition:all .15s; color:var(--muted); }
-.filter-tab.active { border-color:var(--primary); color:var(--primary); background:#eff6ff; }
-
-/* Feedback */
-.feedback-part { margin-bottom:20px; border:1px solid var(--border); border-radius:12px; overflow:hidden; }
-.feedback-part-header { padding:12px 18px; font-weight:700; font-size:.9em; display:flex; align-items:center; gap:8px; }
-.feedback-part-header.listening { background:#ede9fe; color:var(--secondary); }
-.feedback-part-header.reading   { background:#dbeafe; color:#1d4ed8; }
-.feedback-part-header.writing   { background:#fff1f2; color:#be123c; }
-.feedback-item { padding:14px 18px; border-bottom:1px solid var(--border); font-size:.88em; line-height:1.5; }
-.feedback-item:last-child { border-bottom:none; }
-.feedback-item .fi-label { font-weight:600; margin-bottom:4px; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-.feedback-item .student-ans { color:var(--muted); }
-.feedback-item .correct-ans { color:var(--success); font-weight:600; }
-.feedback-item .explanation { margin-top:5px; color:#64748b; font-style:italic; }
-.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:.8em; font-weight:700; }
-.tag.correct-tag   { background:#dcfce7; color:#15803d; }
-.tag.incorrect-tag { background:#fee2e2; color:#b91c1c; }
-.tag.info-tag      { background:#dbeafe; color:#1d4ed8; }
-
-/* Gemini score inputs (in results) */
-.gr-section { margin-top:18px; }
-.gr-section h4 { font-size:.9em; font-weight:700; color:#065f46; margin-bottom:10px; }
-.gr-row { display:flex; align-items:center; gap:10px; padding:8px 0; border-bottom:1px solid #a7f3d0; font-size:.88em; }
-.gr-row:last-child { border-bottom:none; }
-.gr-row label { flex:1; color:var(--text); }
-.gr-row input[type="number"] { width:72px; padding:5px 8px; border:2px solid #6ee7b7; border-radius:6px; font-family:'DM Sans',sans-serif; font-size:.9em; text-align:center; }
-.gr-row input[type="number"]:focus { outline:none; border-color:var(--success); }
-.update-gemini-btn { background:linear-gradient(135deg,#059669,#10b981); color:white; border:none; border-radius:10px; padding:11px 22px; font-family:'DM Sans',sans-serif; font-size:.9em; font-weight:600; cursor:pointer; transition:all .2s; margin-top:14px; display:inline-flex; align-items:center; gap:8px; }
-.update-gemini-btn:hover { transform:translateY(-1px); box-shadow:0 4px 14px rgba(16,185,129,0.3); }
-.bloque2-note { font-size:.82em; color:#047857; margin-bottom:10px; font-style:italic; }
-
-/* Modal */
-.modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,.5); z-index:1000; align-items:center; justify-content:center; backdrop-filter:blur(2px); }
-.modal-overlay.active { display:flex; }
-.modal { background:white; border-radius:16px; padding:36px 32px; max-width:440px; width:92%; text-align:center; box-shadow:0 20px 60px rgba(79,70,229,0.25); }
-.modal-icon { font-size:48px; margin-bottom:14px; display:block; }
-.modal h3 { font-family:'DM Serif Display',serif; font-size:1.5em; color:var(--text); margin-bottom:12px; }
-.modal p { font-size:.9em; color:var(--muted); margin-bottom:10px; line-height:1.6; }
-.modal ol { text-align:left; padding-left:18px; margin-bottom:18px; font-size:.88em; color:var(--text); line-height:1.8; }
-.modal-btns { display:flex; gap:12px; }
-.modal-btn { flex:1; padding:12px; border-radius:8px; font-family:'DM Sans',sans-serif; font-size:.93em; font-weight:600; cursor:pointer; border:none; transition:opacity .15s; }
-.modal-btn:hover { opacity:.88; }
-.modal-btn.cancel { background:#f1f5f9; color:var(--muted); }
-.modal-btn.go     { background:linear-gradient(135deg,#4285F4,#34A853); color:white; }
-
-/* Save toast */
-#saveToast { display:none; position:fixed; bottom:22px; right:22px; background:var(--success); color:white; padding:10px 18px; border-radius:8px; font-size:.85em; font-weight:600; z-index:999; box-shadow:0 4px 14px rgba(16,185,129,0.3); }
-
-@media(max-width:768px){
-  .content { padding:20px; }
-  .header  { padding:28px 20px; }
-  .header h1 { font-size:1.6em; }
-  .section-body { padding:18px; }
-  .score-pills { gap:8px; }
-  .score-pill  { font-size:.78em; padding:5px 12px; }
-}
+:root{--primary:#4f46e5;--primary-light:#818cf8;--secondary:#7c3aed;--danger:#ef4444;--success:#10b981;--warning:#f59e0b;--bg:#f1f5f9;--card:#fff;--text:#1e293b;--muted:#64748b;--border:#e2e8f0;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'DM Sans',sans-serif;background:linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#06b6d4 100%);min-height:100vh;padding:30px 15px;color:var(--text);}
+.container{background:var(--card);border-radius:20px;box-shadow:0 25px 60px rgba(79,70,229,0.25);max-width:920px;margin:0 auto;overflow:hidden;}
+.header{background:linear-gradient(135deg,#4f46e5,#7c3aed);padding:40px;text-align:center;color:white;}
+.header .logo{font-size:.75em;letter-spacing:4px;text-transform:uppercase;opacity:.8;margin-bottom:12px;}
+.header h1{font-family:'DM Serif Display',serif;font-size:2.2em;margin-bottom:8px;line-height:1.2;}
+.header p{opacity:.85;font-size:1em;font-weight:300;}
+.score-pills{display:flex;justify-content:center;gap:12px;margin-top:20px;flex-wrap:wrap;}
+.score-pill{background:rgba(255,255,255,0.2);border:1px solid rgba(255,255,255,0.3);border-radius:50px;padding:6px 18px;font-size:.85em;font-weight:500;}
+.content{padding:40px;}
+.info-box{background:#eff6ff;border:1px solid #bfdbfe;border-left:4px solid var(--primary);border-radius:10px;padding:18px 22px;margin-bottom:30px;font-size:.9em;line-height:1.7;color:#1e40af;}
+.info-box ul{padding-left:18px;margin-top:6px;}.info-box li{margin-bottom:3px;}
+.es-toggle{display:inline-block;margin-top:8px;font-size:.82em;color:var(--primary);cursor:pointer;border:none;background:none;font-family:'DM Sans',sans-serif;text-decoration:underline;padding:0;}
+.es-text{display:none;margin-top:8px;background:#f0f4ff;border-radius:8px;padding:10px 14px;font-size:.88em;color:#3730a3;line-height:1.6;}
+#savedBanner{background:#ecfdf5;border:1px solid #6ee7b7;border-radius:10px;padding:12px 18px;margin-bottom:20px;font-size:.88em;color:#065f46;display:none;align-items:center;gap:10px;}
+#savedBanner button{margin-left:auto;background:none;border:1px solid #10b981;color:#065f46;padding:4px 12px;border-radius:6px;cursor:pointer;font-size:.85em;white-space:nowrap;}
+.name-block{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin-bottom:35px;}
+.name-block label{display:block;font-weight:600;margin-bottom:8px;color:var(--primary);font-size:.95em;}
+.name-block input{width:100%;padding:10px 14px;border:2px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:1em;transition:border-color .2s;}
+.name-block input:focus{outline:none;border-color:var(--primary);}
+.section{margin-bottom:40px;border-radius:14px;overflow:hidden;border:1px solid var(--border);}
+.section-header{padding:18px 24px;display:flex;align-items:center;gap:12px;}
+.section-header.listening{background:linear-gradient(135deg,#ede9fe,#ddd6fe);border-bottom:1px solid #c4b5fd;}
+.section-header.reading{background:linear-gradient(135deg,#eff6ff,#dbeafe);border-bottom:1px solid #93c5fd;}
+.section-header.writing{background:linear-gradient(135deg,#fff1f2,#ffe4e6);border-bottom:1px solid #fca5a5;}
+.section-header .icon{font-size:1.5em;}.section-header h2{font-family:'DM Serif Display',serif;font-size:1.4em;color:var(--text);}
+.section-header .pts{margin-left:auto;background:white;border-radius:20px;padding:4px 14px;font-size:.82em;font-weight:600;color:var(--primary);white-space:nowrap;}
+.section-body{padding:28px;}
+.part-header{font-weight:700;font-size:1em;color:var(--secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;padding-bottom:8px;border-bottom:2px dashed #e9d5ff;}
+.part-instructions{background:#fafafa;border-radius:8px;padding:12px 16px;font-size:.9em;color:var(--muted);margin-bottom:18px;line-height:1.6;}
+.part-divider{border:none;border-top:2px dashed var(--border);margin:28px 0;}
+.audio-container{background:linear-gradient(135deg,#f5f3ff,#ede9fe);border:1px solid #c4b5fd;border-radius:12px;padding:18px 22px;margin-bottom:20px;}
+.audio-label{font-weight:600;color:var(--secondary);margin-bottom:10px;font-size:.95em;}
+audio{width:100%;border-radius:8px;margin-bottom:8px;}
+.play-counter{font-size:.82em;font-weight:600;color:var(--muted);background:white;display:inline-block;padding:4px 12px;border-radius:20px;border:1px solid var(--border);transition:color .2s,border-color .2s;}
+.play-counter.warning{color:var(--warning);border-color:var(--warning);}.play-counter.limit{color:var(--danger);border-color:var(--danger);}
+.mc-grid{display:flex;flex-direction:column;gap:20px;margin-top:10px;}
+.mc-item{background:#fafafa;border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+.mc-conv-label{font-size:.78em;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--secondary);margin-bottom:6px;}
+.mc-question{font-weight:600;font-size:.93em;margin-bottom:10px;color:var(--text);}
+.mc-options{display:flex;flex-direction:column;gap:6px;}
+.mc-options label{display:flex;align-items:center;gap:10px;padding:9px 13px;border:1px solid var(--border);border-radius:7px;cursor:pointer;font-size:.9em;transition:all .15s;background:white;}
+.mc-options label:hover{border-color:var(--primary-light);background:#f5f3ff;}
+.mc-options input[type="radio"]{accent-color:var(--primary);flex-shrink:0;}
+.binary-grid{display:flex;flex-direction:column;gap:12px;margin-top:10px;}
+.binary-item{display:flex;align-items:center;gap:12px;background:#fafafa;border:1px solid var(--border);border-radius:10px;padding:14px 18px;font-size:.92em;flex-wrap:wrap;}
+.binary-num{font-weight:700;color:var(--secondary);min-width:20px;}
+.binary-label{flex:1;color:var(--text);font-weight:500;}
+.binary-sel{padding:6px 10px;border:2px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.9em;font-weight:600;color:var(--text);background:white;cursor:pointer;transition:border-color .2s;}
+.binary-sel:focus{outline:none;border-color:var(--primary);}
+.reading-text-box{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:22px 26px;margin-bottom:22px;line-height:1.9;font-size:.95em;}
+.reading-text-box h4{text-align:center;font-family:'DM Serif Display',serif;font-size:1.15em;margin-bottom:14px;color:var(--text);}
+.ra-grid{display:flex;flex-direction:column;gap:10px;margin-top:10px;}
+.ra-row{display:flex;align-items:baseline;gap:8px;background:#fafafa;border:1px solid var(--border);border-radius:8px;padding:12px 16px;font-size:.92em;flex-wrap:wrap;}
+.ra-num{font-weight:700;color:var(--secondary);min-width:22px;}
+.ra-input{flex:1;min-width:160px;padding:6px 10px;border:2px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.93em;color:var(--text);transition:border-color .2s;}
+.ra-input:focus{outline:none;border-color:var(--primary);}
+.rb-para-block{background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin-bottom:12px;font-size:.92em;line-height:1.7;}
+.rb-para-num{font-weight:700;color:var(--primary);font-size:.85em;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;}
+.match-sel{padding:6px 10px;border:2px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.93em;font-weight:600;color:var(--text);background:white;cursor:pointer;min-width:60px;transition:border-color .2s;}
+.match-sel:focus{outline:none;border-color:var(--primary);}
+#writingText{width:100%;min-height:200px;padding:14px 18px;border:2px solid var(--border);border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.95em;color:var(--text);resize:vertical;line-height:1.7;transition:border-color .2s;margin-top:12px;}
+#writingText:focus{outline:none;border-color:var(--primary);}
+.word-count-bar{display:flex;align-items:center;gap:10px;margin-top:6px;font-size:.85em;color:var(--muted);}
+#wordCountDisplay{font-weight:700;color:var(--primary);background:var(--bg);padding:3px 10px;border-radius:10px;}
+#wordCountDisplay.ok{color:var(--success);}#wordCountDisplay.low{color:var(--warning);}
+.gemini-block{background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #6ee7b7;border-radius:14px;padding:24px 28px;margin-top:30px;}
+.gemini-block h3{font-family:'DM Serif Display',serif;font-size:1.2em;color:#065f46;margin-bottom:6px;}
+.gemini-block p{font-size:.88em;color:#047857;margin-bottom:16px;line-height:1.6;}
+.gemini-btn{background:linear-gradient(135deg,#4285F4,#34A853);color:white;border:none;border-radius:10px;padding:11px 22px;font-family:'DM Sans',sans-serif;font-size:.9em;font-weight:600;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:8px;}
+.gemini-btn:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(66,133,244,0.3);}
+.gemini-warn{display:none;margin-top:10px;font-size:.85em;color:#92400e;background:#fffbeb;border:1px solid #fcd34d;border-radius:8px;padding:8px 14px;}
+.rubric-block{margin-top:22px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.rubric-header{background:linear-gradient(135deg,#fff1f2,#ffe4e6);padding:12px 18px;font-weight:700;font-size:.9em;color:#be123c;border-bottom:1px solid #fca5a5;}
+.rubric-item{padding:14px 18px;border-bottom:1px solid var(--border);font-size:.88em;}
+.rubric-item:last-child{border-bottom:none;}
+.rubric-item>label{font-weight:600;color:var(--text);margin-bottom:8px;display:block;}
+.rub-options{display:flex;flex-direction:column;gap:6px;}
+.rub-options label{font-weight:400;display:flex;align-items:flex-start;gap:10px;background:white;border:2px solid var(--border);border-radius:8px;padding:10px 14px;cursor:pointer;transition:all .15s;margin:0;}
+.rub-options label:hover{border-color:var(--primary-light);background:#f5f3ff;}
+.rub-options input[type="radio"]{margin-top:3px;accent-color:var(--primary);flex-shrink:0;}
+.rub-options label.selected-rub{border-color:var(--primary);background:#eff6ff;}
+.rub-level{font-weight:700;font-size:.88em;color:var(--text);}
+.rub-pts{background:var(--primary);color:white;border-radius:10px;padding:1px 8px;font-size:.78em;margin-left:6px;}
+.rub-pts.zero{background:#ef4444;}
+.rub-desc{font-size:.82em;color:var(--muted);margin-top:3px;line-height:1.4;}
+.check-icon{margin-left:auto;font-size:1.1em;opacity:0;flex-shrink:0;color:var(--primary);}
+.rub-options label.selected-rub .check-icon{opacity:1;}
+.rubric-total{text-align:right;font-weight:700;font-size:.95em;color:var(--primary);padding:10px 18px 14px;}
+.progress-wrap{margin-bottom:24px;}
+.progress-label{font-size:.82em;font-weight:600;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between;}
+.progress-bar{background:var(--border);border-radius:20px;height:8px;overflow:hidden;}
+#progressFill{height:100%;border-radius:20px;background:linear-gradient(90deg,#4f46e5,#7c3aed);transition:width .4s;width:0%;}
+#progressFill.complete{background:linear-gradient(90deg,#10b981,#059669);}
+.calculate-btn{width:100%;background:linear-gradient(135deg,#10b981,#059669);color:white;border:none;border-radius:14px;padding:18px;font-family:'DM Sans',sans-serif;font-size:1.05em;font-weight:700;cursor:pointer;margin:16px 0 0;transition:all .2s;}
+.calculate-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(16,185,129,0.35);}
+#blankWarning{display:none;background:#fffbeb;border:1px solid #fcd34d;border-left:4px solid var(--warning);border-radius:12px;padding:16px 20px;margin-top:16px;font-size:.88em;color:#92400e;line-height:1.6;}
+#blankWarning strong{display:block;margin-bottom:8px;}#blankWarning ul{padding-left:18px;margin:6px 0 10px;}#blankWarning ul li{margin-bottom:4px;}
+.blank-link{color:var(--primary);cursor:pointer;text-decoration:underline;font-weight:600;background:none;border:none;font-family:'DM Sans',sans-serif;font-size:1em;padding:0;}
+.dismiss-btn{background:white;border:1px solid var(--warning);color:#92400e;border-radius:8px;padding:6px 14px;font-family:'DM Sans',sans-serif;font-size:.85em;font-weight:600;cursor:pointer;margin-top:4px;}
+#results{display:none;margin-top:30px;}
+.results-card{background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #6ee7b7;border-radius:16px;padding:30px;margin-bottom:24px;}
+.results-card h3{font-family:'DM Serif Display',serif;font-size:1.5em;color:#065f46;margin-bottom:20px;text-align:center;}
+.score-row{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #a7f3d0;font-size:.95em;}
+.score-row:last-child{border-bottom:none;font-weight:700;font-size:1.05em;}
+.grade-display{text-align:center;margin-top:20px;padding:20px;background:white;border-radius:12px;border:2px solid #10b981;}
+.grade-display .grade-number{font-family:'DM Serif Display',serif;font-size:3.5em;line-height:1;}
+.grade-display .grade-label{color:var(--muted);font-size:.85em;margin-top:4px;}
+.grade-display .grade-msg{font-size:.9em;margin-top:8px;font-weight:600;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.summary-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px;}
+.summary-card{background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center;}
+.summary-card .s-title{font-weight:700;font-size:.82em;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;}
+.summary-card .s-score{font-family:'DM Serif Display',serif;font-size:1.5em;color:var(--primary);}
+.summary-card .s-dots{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:8px;}
+.dot{width:10px;height:10px;border-radius:50%;}.dot.ok{background:#10b981;}.dot.err{background:#ef4444;}
+.personalized-msg{padding:12px 16px;border-radius:10px;font-size:.88em;margin-bottom:14px;line-height:1.5;}
+.msg-great{background:#f0fdf4;border:1px solid #6ee7b7;color:#065f46;}
+.msg-good{background:#fffbeb;border:1px solid #fde68a;color:#92400e;}
+.msg-low{background:#fef2f2;border:1px solid #fca5a5;color:#991b1b;}
+.msg-tips{margin-top:6px;padding-left:18px;}.msg-tips li{margin-bottom:3px;}
+.filter-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+.filter-tab{padding:6px 16px;border-radius:20px;border:2px solid var(--border);background:white;font-family:'DM Sans',sans-serif;font-size:.82em;font-weight:600;cursor:pointer;transition:all .15s;color:var(--muted);}
+.filter-tab.active{border-color:var(--primary);color:var(--primary);background:#eff6ff;}
+.feedback-part{margin-bottom:20px;border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.feedback-part-header{padding:12px 18px;font-weight:700;font-size:.9em;display:flex;align-items:center;gap:8px;}
+.feedback-part-header.listening{background:#ede9fe;color:var(--secondary);}
+.feedback-part-header.reading{background:#dbeafe;color:#1d4ed8;}
+.feedback-part-header.writing{background:#fff1f2;color:#be123c;}
+.feedback-item{padding:14px 18px;border-bottom:1px solid var(--border);font-size:.88em;line-height:1.5;}
+.feedback-item:last-child{border-bottom:none;}
+.feedback-item .fi-label{font-weight:600;margin-bottom:4px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.feedback-item .student-ans{color:var(--muted);}.feedback-item .correct-ans{color:var(--success);font-weight:600;}
+.feedback-item .explanation{margin-top:5px;color:#64748b;font-style:italic;}
+.tag{display:inline-block;padding:2px 8px;border-radius:4px;font-size:.8em;font-weight:700;}
+.tag.correct-tag{background:#dcfce7;color:#15803d;}.tag.incorrect-tag{background:#fee2e2;color:#b91c1c;}.tag.info-tag{background:#dbeafe;color:#1d4ed8;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;align-items:center;justify-content:center;backdrop-filter:blur(2px);}
+.modal-overlay.active{display:flex;}
+.modal{background:white;border-radius:16px;padding:36px 32px;max-width:440px;width:92%;text-align:center;box-shadow:0 20px 60px rgba(79,70,229,0.25);}
+.modal-icon{font-size:48px;margin-bottom:14px;display:block;}
+.modal h3{font-family:'DM Serif Display',serif;font-size:1.5em;color:var(--text);margin-bottom:12px;}
+.modal p{font-size:.9em;color:var(--muted);margin-bottom:10px;line-height:1.6;}
+.modal ol{text-align:left;padding-left:18px;margin-bottom:18px;font-size:.88em;color:var(--text);line-height:1.8;}
+.modal-btns{display:flex;gap:12px;}
+.modal-btn{flex:1;padding:12px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.93em;font-weight:600;cursor:pointer;border:none;transition:opacity .15s;}
+.modal-btn:hover{opacity:.88;}.modal-btn.cancel{background:#f1f5f9;color:var(--muted);}.modal-btn.go{background:linear-gradient(135deg,#4285F4,#34A853);color:white;}
+#saveToast{display:none;position:fixed;bottom:22px;right:22px;background:var(--success);color:white;padding:10px 18px;border-radius:8px;font-size:.85em;font-weight:600;z-index:999;box-shadow:0 4px 14px rgba(16,185,129,0.3);}
+@media(max-width:600px){.summary-cards{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.content{padding:20px;}.header{padding:28px 20px;}.header h1{font-size:1.6em;}.section-body{padding:18px;}.score-pills{gap:8px;}.score-pill{font-size:.78em;padding:5px 12px;}}
 </style>
 </head>
 <body>
-
-<!-- GEMINI MODAL -->
 <div class="modal-overlay" id="geminiModal">
   <div class="modal">
-    <span class="modal-icon">✨</span>
-    <h3>Prompt copiado al portapapeles</h3>
-    <p>Sigue estos pasos:</p>
+    <span class="modal-icon">📋</span>
+    <h3>Prompt copiado</h3>
+    <p>El prompt con tu texto ya esta en el portapapeles.</p>
     <ol>
-      <li>Abre Gemini en la pestaña que se abrirá.</li>
-      <li>Pega el texto (Ctrl+V / Cmd+V) y envíalo.</li>
+      <li>Abre Gemini en tu navegador.</li>
+      <li>Pega el texto con Ctrl+V (Windows) o Cmd+V (Mac).</li>
       <li>Lee el <strong>Bloque 2</strong> de la respuesta de Gemini.</li>
-      <li>Vuelve aquí e ingresa los puntajes en los campos correspondientes.</li>
-      <li>Haz clic en <strong>"Actualizar mi nota"</strong>.</li>
+      <li>Vuelve aqui e ingresa los puntajes en la rubrica.</li>
+      <li>Haz clic en <strong>Calcular mi resultado</strong>.</li>
     </ol>
     <div class="modal-btns">
       <button class="modal-btn cancel" onclick="closeModal('geminiModal')">Cerrar</button>
-      <button class="modal-btn go" onclick="window.open('https://gemini.google.com','_blank');closeModal('geminiModal')">Abrir Gemini ↗</button>
+      <button class="modal-btn go" onclick="closeModal('geminiModal');window.open('https://gemini.google.com','_blank')">Abrir Gemini</button>
     </div>
   </div>
 </div>
-
-<div id="saveToast">✓ Guardado automáticamente</div>
-
+<div id="saveToast">Guardado</div>
 <div class="container">
-
   <div class="header">
-    <div class="logo">DuocUC · Inglés Básico I</div>
+    <div class="logo">DuocUC - Ingles Basico I</div>
     <h1>Mock Test — End of Term</h1>
-    <p>Files 4, 5 &amp; 6 · Práctica para el examen final</p>
+    <p>Files 4, 5 &amp; 6 · Practica para el examen final</p>
     <div class="score-pills">
-      <span class="score-pill">🎧 Listening — 12 pts</span>
-      <span class="score-pill">📖 Reading — 12 pts</span>
-      <span class="score-pill">✍️ Writing — 12 pts</span>
-      <span class="score-pill">⏱ 60 minutos</span>
+      <span class="score-pill">Listening — 12 pts</span>
+      <span class="score-pill">Reading — 12 pts</span>
+      <span class="score-pill">Writing — 12 pts</span>
+      <span class="score-pill">60 minutos</span>
     </div>
   </div>
-
   <div class="content">
-
-    <div id="savedBanner">
-      💾 Tienes respuestas guardadas anteriormente.
-      <button onclick="loadSaved()">Restaurar</button>
-      <button onclick="clearSaved()" style="border-color:#ef4444;color:#b91c1c;">Borrar</button>
-    </div>
-
+    <div id="savedBanner">Tienes respuestas guardadas de una sesion anterior.<button onclick="clearAllAnswers()">Borrar y empezar de nuevo</button></div>
     <div class="info-box">
-      <strong>📋 Directions</strong>
+      <strong>Directions</strong>
       <ul>
         <li>You have <strong>60 minutes</strong> to complete this mock test.</li>
-        <li>Audio files will play a maximum of <strong>2 times</strong>. Listen carefully.</li>
+        <li>Audio files will play a maximum of <strong>2 times</strong>.</li>
         <li>Read the questions before you listen or read the texts.</li>
-        <li>Complete this test individually. Your answers are saved automatically.</li>
+        <li>Your answers are saved automatically as you type.</li>
       </ul>
-      <button class="es-toggle" onclick="toggleEs('es-directions')">🌐 Ver instrucciones en español</button>
-      <div class="es-text" id="es-directions">
-        Tienes <strong>60 minutos</strong> para completar este mock test. Los audios se reproducen máximo <strong>2 veces</strong>. Lee las preguntas antes de escuchar o leer los textos. Completa el test de forma individual. Tus respuestas se guardan automáticamente.
-      </div>
+      <button class="es-toggle" onclick="toggleEs('es-dir')">Ver instrucciones en espanol</button>
+      <div class="es-text" id="es-dir">Tienes <strong>60 minutos</strong>. Los audios se reproducen maximo <strong>2 veces</strong>. Lee las preguntas antes de escuchar o leer. Tus respuestas se guardan automaticamente.</div>
     </div>
-
     <div class="name-block">
       <label for="studentName">Your name / Tu nombre</label>
-      <input type="text" id="studentName" placeholder="Write your full name here…" oninput="saveAll()">
+      <input type="text" id="studentName" placeholder="Write your full name here..." oninput="saveAll()">
     </div>
 
-    <!-- ═══════════════════════════════
-         I. LISTENING
-    ═══════════════════════════════ -->
     <div class="section">
-      <div class="section-header listening">
-        <span class="icon">🎧</span>
-        <h2>I. Listening</h2>
-        <span class="pts">12 pts</span>
-      </div>
+      <div class="section-header listening"><span class="icon">🎧</span><h2>I. Listening</h2><span class="pts">12 pts</span></div>
       <div class="section-body">
-
         <div class="part-header">Part A</div>
-        <div class="part-instructions">
-          Listen to four short conversations and select the correct answer. (6 points — 1 pt each)
-          <br><button class="es-toggle" onclick="toggleEs('es-la')">🌐 Ver en español</button>
-          <div class="es-text" id="es-la">Escucha cuatro conversaciones cortas y selecciona la respuesta correcta para cada pregunta.</div>
-        </div>
-
+        <div class="part-instructions">Listen to four short conversations and select the correct answer. (6 points — 1 pt each)<br><button class="es-toggle" onclick="toggleEs('es-la')">Ver en espanol</button><div class="es-text" id="es-la">Escucha cuatro conversaciones cortas y selecciona la respuesta correcta.</div></div>
         <div class="audio-container">
-          <div class="audio-label">🔊 Listening A — Four conversations</div>
-          <audio id="audioA" controls preload="metadata" playsinline onplay="trackPlay('audioA')">
-            <source src="https://github.com/Moncholate/INU1101-End-of-Term-Written-Mock-Test/raw/refs/heads/main/Listening%20A.mp3" type="audio/mpeg">
-          </audio>
+          <div class="audio-label">Listening A — Four conversations</div>
+          <audio id="audioA" controls preload="metadata" playsinline onplay="trackPlay('audioA')"><source src="https://github.com/Moncholate/INU1101-End-of-Term-Written-Mock-Test/raw/refs/heads/main/Listening%20A.mp3" type="audio/mpeg"></audio>
           <div class="play-counter" id="counter_audioA">Plays: 0 / 2</div>
         </div>
-
-        <div class="mc-grid" id="mc-grid-la">
-
-          <div class="mc-item">
-            <div class="mc-conv-label">Conversation 1</div>
-            <div class="mc-question">1. Who is Rosa?</div>
-            <div class="mc-options">
-              <label><input type="radio" name="la1" value="a" onchange="saveAll()"> a) Jake's sister</label>
-              <label><input type="radio" name="la1" value="b" onchange="saveAll()"> b) Jake's cousin</label>
-              <label><input type="radio" name="la1" value="c" onchange="saveAll()"> c) Jake's girlfriend</label>
-              <label><input type="radio" name="la1" value="d" onchange="saveAll()"> d) Jake's neighbor</label>
-            </div>
-          </div>
-
-          <div class="mc-item">
-            <div class="mc-conv-label">Conversation 1</div>
-            <div class="mc-question">2. Beth is Jake's ____</div>
-            <div class="mc-options">
-              <label><input type="radio" name="la2" value="a" onchange="saveAll()"> a) cousin</label>
-              <label><input type="radio" name="la2" value="b" onchange="saveAll()"> b) neighbor</label>
-              <label><input type="radio" name="la2" value="c" onchange="saveAll()"> c) sister</label>
-              <label><input type="radio" name="la2" value="d" onchange="saveAll()"> d) friend</label>
-            </div>
-          </div>
-
-          <div class="mc-item">
-            <div class="mc-conv-label">Conversation 2</div>
-            <div class="mc-question">3. Who does Speaker 2 have in his family?</div>
-            <div class="mc-options">
-              <label><input type="radio" name="la3" value="a" onchange="saveAll()"> a) A brother and a grandmother</label>
-              <label><input type="radio" name="la3" value="b" onchange="saveAll()"> b) A sister and a grandmother</label>
-              <label><input type="radio" name="la3" value="c" onchange="saveAll()"> c) A brother and a sister</label>
-              <label><input type="radio" name="la3" value="d" onchange="saveAll()"> d) Two brothers and a grandmother</label>
-            </div>
-          </div>
-
-          <div class="mc-item">
-            <div class="mc-conv-label">Conversation 2</div>
-            <div class="mc-question">4. Who is Clara?</div>
-            <div class="mc-options">
-              <label><input type="radio" name="la4" value="a" onchange="saveAll()"> a) Speaker 2's sister</label>
-              <label><input type="radio" name="la4" value="b" onchange="saveAll()"> b) Speaker 2's mother</label>
-              <label><input type="radio" name="la4" value="c" onchange="saveAll()"> c) Speaker 2's grandmother</label>
-              <label><input type="radio" name="la4" value="d" onchange="saveAll()"> d) Speaker 2's friend</label>
-            </div>
-          </div>
-
-          <div class="mc-item">
-            <div class="mc-conv-label">Conversation 3</div>
-            <div class="mc-question">5. What's true about the camera?</div>
-            <div class="mc-options">
-              <label><input type="radio" name="la5" value="a" onchange="saveAll()"> a) It's old but very good</label>
-              <label><input type="radio" name="la5" value="b" onchange="saveAll()"> b) It's new and very good</label>
-              <label><input type="radio" name="la5" value="c" onchange="saveAll()"> c) It's heavy and fast</label>
-              <label><input type="radio" name="la5" value="d" onchange="saveAll()"> d) It's small and expensive</label>
-            </div>
-          </div>
-
-          <div class="mc-item">
-            <div class="mc-conv-label">Conversation 4</div>
-            <div class="mc-question">6. How does the owner describe the bicycle?</div>
-            <div class="mc-options">
-              <label><input type="radio" name="la6" value="a" onchange="saveAll()"> a) It's not new, but it's fast and cheap</label>
-              <label><input type="radio" name="la6" value="b" onchange="saveAll()"> b) It's new and fast</label>
-              <label><input type="radio" name="la6" value="c" onchange="saveAll()"> c) It's old and expensive</label>
-              <label><input type="radio" name="la6" value="d" onchange="saveAll()"> d) It's fast and expensive</label>
-            </div>
-          </div>
-
+        <div class="mc-grid">
+          <div class="mc-item"><div class="mc-conv-label">Conversation 1</div><div class="mc-question">1. Who is Rosa?</div><div class="mc-options"><label><input type="radio" name="la1" value="a" onchange="saveAll();updateProgress()"> a) Jake's sister</label><label><input type="radio" name="la1" value="b" onchange="saveAll();updateProgress()"> b) Jake's cousin</label><label><input type="radio" name="la1" value="c" onchange="saveAll();updateProgress()"> c) Jake's girlfriend</label><label><input type="radio" name="la1" value="d" onchange="saveAll();updateProgress()"> d) Jake's neighbor</label></div></div>
+          <div class="mc-item"><div class="mc-conv-label">Conversation 1</div><div class="mc-question">2. Beth is Jake's ____</div><div class="mc-options"><label><input type="radio" name="la2" value="a" onchange="saveAll();updateProgress()"> a) cousin</label><label><input type="radio" name="la2" value="b" onchange="saveAll();updateProgress()"> b) neighbor</label><label><input type="radio" name="la2" value="c" onchange="saveAll();updateProgress()"> c) sister</label><label><input type="radio" name="la2" value="d" onchange="saveAll();updateProgress()"> d) friend</label></div></div>
+          <div class="mc-item"><div class="mc-conv-label">Conversation 2</div><div class="mc-question">3. Who does Speaker 2 have in his family?</div><div class="mc-options"><label><input type="radio" name="la3" value="a" onchange="saveAll();updateProgress()"> a) A brother and a grandmother</label><label><input type="radio" name="la3" value="b" onchange="saveAll();updateProgress()"> b) A sister and a grandmother</label><label><input type="radio" name="la3" value="c" onchange="saveAll();updateProgress()"> c) A brother and a sister</label><label><input type="radio" name="la3" value="d" onchange="saveAll();updateProgress()"> d) Two brothers and a grandmother</label></div></div>
+          <div class="mc-item"><div class="mc-conv-label">Conversation 2</div><div class="mc-question">4. Who is Clara?</div><div class="mc-options"><label><input type="radio" name="la4" value="a" onchange="saveAll();updateProgress()"> a) Speaker 2's sister</label><label><input type="radio" name="la4" value="b" onchange="saveAll();updateProgress()"> b) Speaker 2's mother</label><label><input type="radio" name="la4" value="c" onchange="saveAll();updateProgress()"> c) Speaker 2's grandmother</label><label><input type="radio" name="la4" value="d" onchange="saveAll();updateProgress()"> d) Speaker 2's friend</label></div></div>
+          <div class="mc-item"><div class="mc-conv-label">Conversation 3</div><div class="mc-question">5. What's true about the camera?</div><div class="mc-options"><label><input type="radio" name="la5" value="a" onchange="saveAll();updateProgress()"> a) It's old but very good</label><label><input type="radio" name="la5" value="b" onchange="saveAll();updateProgress()"> b) It's new and very good</label><label><input type="radio" name="la5" value="c" onchange="saveAll();updateProgress()"> c) It's heavy and fast</label><label><input type="radio" name="la5" value="d" onchange="saveAll();updateProgress()"> d) It's small and expensive</label></div></div>
+          <div class="mc-item"><div class="mc-conv-label">Conversation 4</div><div class="mc-question">6. How does the owner describe the bicycle?</div><div class="mc-options"><label><input type="radio" name="la6" value="a" onchange="saveAll();updateProgress()"> a) It's not new, but it's fast and cheap</label><label><input type="radio" name="la6" value="b" onchange="saveAll();updateProgress()"> b) It's new and fast</label><label><input type="radio" name="la6" value="c" onchange="saveAll();updateProgress()"> c) It's old and expensive</label><label><input type="radio" name="la6" value="d" onchange="saveAll();updateProgress()"> d) It's fast and expensive</label></div></div>
         </div>
-
         <hr class="part-divider">
-
         <div class="part-header">Part B</div>
-        <div class="part-instructions">
-          Listen and select the correct word or words to complete each sentence. (6 points — 1 pt each)
-          <br><button class="es-toggle" onclick="toggleEs('es-lb')">🌐 Ver en español</button>
-          <div class="es-text" id="es-lb">Escucha a Rosa y David hablar sobre sus rutinas y selecciona la opción correcta para completar cada oración.</div>
-        </div>
-
+        <div class="part-instructions">Listen and select the correct word or words. (6 points — 1 pt each)<br><button class="es-toggle" onclick="toggleEs('es-lb')">Ver en espanol</button><div class="es-text" id="es-lb">Escucha a Rosa y David y selecciona la opcion correcta para completar cada oracion.</div></div>
         <div class="audio-container">
-          <div class="audio-label">🔊 Listening B — Rosa and David</div>
-          <audio id="audioB" controls preload="metadata" playsinline onplay="trackPlay('audioB')">
-            <source src="https://github.com/Moncholate/INU1101-End-of-Term-Written-Mock-Test/raw/refs/heads/main/Listening%20B.mp3" type="audio/mpeg">
-          </audio>
+          <div class="audio-label">Listening B — Rosa and David</div>
+          <audio id="audioB" controls preload="metadata" playsinline onplay="trackPlay('audioB')"><source src="https://github.com/Moncholate/INU1101-End-of-Term-Written-Mock-Test/raw/refs/heads/main/Listening%20B.mp3" type="audio/mpeg"></audio>
           <div class="play-counter" id="counter_audioB">Plays: 0 / 2</div>
         </div>
-
         <div class="binary-grid">
-          <div class="binary-item">
-            <span class="binary-num">1.</span>
-            <span class="binary-label">David eats breakfast</span>
-            <select class="binary-sel" id="lb1" onchange="saveAll()">
-              <option value="">--</option>
-              <option value="AT HOME">AT HOME</option>
-              <option value="AT WORK">AT WORK</option>
-            </select>
-          </div>
-          <div class="binary-item">
-            <span class="binary-num">2.</span>
-            <span class="binary-label">At home, David usually eats</span>
-            <select class="binary-sel" id="lb2" onchange="saveAll()" style="min-width:170px">
-              <option value="">--</option>
-              <option value="TOAST AND EGGS">TOAST AND EGGS</option>
-              <option value="TOAST AND FRUIT">TOAST AND FRUIT</option>
-            </select>
-          </div>
-          <div class="binary-item">
-            <span class="binary-num">3.</span>
-            <span class="binary-label">David drinks</span>
-            <select class="binary-sel" id="lb3" onchange="saveAll()">
-              <option value="">--</option>
-              <option value="TEA">TEA</option>
-              <option value="COFFEE">COFFEE</option>
-            </select>
-            <span class="binary-label" style="flex:0;white-space:nowrap;">at breakfast.</span>
-          </div>
-          <div class="binary-item">
-            <span class="binary-num">4.</span>
-            <span class="binary-label">David eats lunch</span>
-            <select class="binary-sel" id="lb4" onchange="saveAll()" style="min-width:160px">
-              <option value="">--</option>
-              <option value="AT WORK">AT WORK</option>
-              <option value="AT A RESTAURANT">AT A RESTAURANT</option>
-            </select>
-          </div>
-          <div class="binary-item">
-            <span class="binary-num">5.</span>
-            <span class="binary-label">For lunch, David usually eats</span>
-            <select class="binary-sel" id="lb5" onchange="saveAll()" style="min-width:150px">
-              <option value="">--</option>
-              <option value="A SANDWICH">A SANDWICH</option>
-              <option value="EGGS">EGGS</option>
-            </select>
-          </div>
-          <div class="binary-item">
-            <span class="binary-num">6.</span>
-            <span class="binary-label">David finishes work</span>
-            <select class="binary-sel" id="lb6" onchange="saveAll()">
-              <option value="">--</option>
-              <option value="EARLY">EARLY</option>
-              <option value="LATE">LATE</option>
-            </select>
-          </div>
+          <div class="binary-item"><span class="binary-num">1.</span><span class="binary-label">David eats breakfast</span><select class="binary-sel" id="lb1" onchange="saveAll();updateProgress()"><option value="">--</option><option value="AT HOME">AT HOME</option><option value="AT WORK">AT WORK</option></select></div>
+          <div class="binary-item"><span class="binary-num">2.</span><span class="binary-label">At home, David usually eats</span><select class="binary-sel" id="lb2" onchange="saveAll();updateProgress()" style="min-width:170px"><option value="">--</option><option value="TOAST AND EGGS">TOAST AND EGGS</option><option value="TOAST AND FRUIT">TOAST AND FRUIT</option></select></div>
+          <div class="binary-item"><span class="binary-num">3.</span><span class="binary-label">David drinks</span><select class="binary-sel" id="lb3" onchange="saveAll();updateProgress()"><option value="">--</option><option value="TEA">TEA</option><option value="COFFEE">COFFEE</option></select><span class="binary-label" style="flex:0;white-space:nowrap;">at breakfast.</span></div>
+          <div class="binary-item"><span class="binary-num">4.</span><span class="binary-label">David eats lunch</span><select class="binary-sel" id="lb4" onchange="saveAll();updateProgress()" style="min-width:160px"><option value="">--</option><option value="AT WORK">AT WORK</option><option value="AT A RESTAURANT">AT A RESTAURANT</option></select></div>
+          <div class="binary-item"><span class="binary-num">5.</span><span class="binary-label">For lunch, David usually eats</span><select class="binary-sel" id="lb5" onchange="saveAll();updateProgress()" style="min-width:150px"><option value="">--</option><option value="A SANDWICH">A SANDWICH</option><option value="EGGS">EGGS</option></select></div>
+          <div class="binary-item"><span class="binary-num">6.</span><span class="binary-label">David finishes work</span><select class="binary-sel" id="lb6" onchange="saveAll();updateProgress()"><option value="">--</option><option value="EARLY">EARLY</option><option value="LATE">LATE</option></select></div>
         </div>
-
       </div>
     </div>
 
-    <!-- ═══════════════════════════════
-         II. READING
-    ═══════════════════════════════ -->
     <div class="section">
-      <div class="section-header reading">
-        <span class="icon">📖</span>
-        <h2>II. Reading</h2>
-        <span class="pts">12 pts</span>
-      </div>
+      <div class="section-header reading"><span class="icon">📖</span><h2>II. Reading</h2><span class="pts">12 pts</span></div>
       <div class="section-body">
-
         <div class="part-header">Part A</div>
-        <div class="part-instructions">
-          Read the text and complete the sentences with information from the text. (7 points — 1 pt each)
-          <br><button class="es-toggle" onclick="toggleEs('es-ra')">🌐 Ver en español</button>
-          <div class="es-text" id="es-ra">Lee el texto y completa las oraciones con información del texto. Escribe solo las palabras necesarias.</div>
-        </div>
-
+        <div class="part-instructions">Read the text and complete the sentences. (7 points — 1 pt each)<br><button class="es-toggle" onclick="toggleEs('es-ra')">Ver en espanol</button><div class="es-text" id="es-ra">Lee el texto y completa las oraciones con informacion del texto.</div></div>
         <div class="reading-text-box">
           <h4>MY ENGLISH TEACHER</h4>
           <p>Elena Vargas is a Spanish teacher. She is from Mexico City, but now she lives and works in Toronto, Canada. She works at a language school downtown. Her classes finish at three in the afternoon. She lives in a small apartment with her husband, Marco, and their dog, Taco.</p>
           <br>
           <p>At home, Elena always drinks tea in the morning. After breakfast, Elena goes to work by bus. She always reads a book on the bus. At work, Elena and her students usually eat lunch. They usually have sandwiches and fruit.</p>
         </div>
-
         <div class="ra-grid">
-          <div class="ra-row" id="ra-row-1"><span class="ra-num">1.</span><span class="ra-stem">Elena is from</span><input class="ra-input" id="ra1" type="text" placeholder="…" oninput="saveAll()"></div>
-          <div class="ra-row" id="ra-row-2"><span class="ra-num">2.</span><span class="ra-stem">Elena works as a</span><input class="ra-input" id="ra2" type="text" placeholder="…" oninput="saveAll()"></div>
-          <div class="ra-row" id="ra-row-3"><span class="ra-num">3.</span><span class="ra-stem">Elena works in</span><input class="ra-input" id="ra3" type="text" placeholder="…" oninput="saveAll()"></div>
-          <div class="ra-row" id="ra-row-4"><span class="ra-num">4.</span><span class="ra-stem">Elena's classes finish at</span><input class="ra-input" id="ra4" type="text" placeholder="…" oninput="saveAll()"></div>
-          <div class="ra-row" id="ra-row-5"><span class="ra-num">5.</span><span class="ra-stem">Elena lives with</span><input class="ra-input" id="ra5" type="text" placeholder="…" oninput="saveAll()"></div>
-          <div class="ra-row" id="ra-row-6"><span class="ra-num">6.</span><span class="ra-stem">At lunch, Elena and her students usually eat</span><input class="ra-input" id="ra6" type="text" placeholder="…" oninput="saveAll()"></div>
-          <div class="ra-row" id="ra-row-7"><span class="ra-num">7.</span><span class="ra-stem">Elena always reads a book on the</span><input class="ra-input" id="ra7" type="text" placeholder="…" oninput="saveAll()"></div>
+          <div class="ra-row"><span class="ra-num">1.</span><span class="ra-stem">Elena is from</span><input class="ra-input" id="ra1" type="text" placeholder="..." oninput="saveAll();updateProgress()"></div>
+          <div class="ra-row"><span class="ra-num">2.</span><span class="ra-stem">Elena works as a</span><input class="ra-input" id="ra2" type="text" placeholder="..." oninput="saveAll();updateProgress()"></div>
+          <div class="ra-row"><span class="ra-num">3.</span><span class="ra-stem">Elena works in</span><input class="ra-input" id="ra3" type="text" placeholder="..." oninput="saveAll();updateProgress()"></div>
+          <div class="ra-row"><span class="ra-num">4.</span><span class="ra-stem">Elena's classes finish at</span><input class="ra-input" id="ra4" type="text" placeholder="..." oninput="saveAll();updateProgress()"></div>
+          <div class="ra-row"><span class="ra-num">5.</span><span class="ra-stem">Elena lives with</span><input class="ra-input" id="ra5" type="text" placeholder="..." oninput="saveAll();updateProgress()"></div>
+          <div class="ra-row"><span class="ra-num">6.</span><span class="ra-stem">At lunch, Elena and her students usually eat</span><input class="ra-input" id="ra6" type="text" placeholder="..." oninput="saveAll();updateProgress()"></div>
+          <div class="ra-row"><span class="ra-num">7.</span><span class="ra-stem">Elena always reads a book on the</span><input class="ra-input" id="ra7" type="text" placeholder="..." oninput="saveAll();updateProgress()"></div>
         </div>
-
         <hr class="part-divider">
-
         <div class="part-header">Part B</div>
-        <div class="part-instructions">
-          Read the next part of Elena's profile. Match each question with the correct paragraph by selecting the question number. (5 points — 1 pt each)
-          <br><button class="es-toggle" onclick="toggleEs('es-rb')">🌐 Ver en español</button>
-          <div class="es-text" id="es-rb">Lee la siguiente parte del perfil de Elena. Relaciona cada pregunta con el párrafo correcto seleccionando el número de la pregunta.</div>
-        </div>
-
-        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;margin-bottom:18px;font-size:.9em;color:#1e40af;">
-          <strong>Questions:</strong>
-          <ol style="padding-left:20px;margin-top:6px;line-height:2;">
-            <li>Where do you work?</li>
-            <li>What do you do after work?</li>
-            <li>Do you like your job?</li>
-            <li>What about your family?</li>
-            <li>Who are your students?</li>
-          </ol>
-        </div>
-
-        <div class="rb-para-block">
-          <div class="rb-para-num">Paragraph A</div>
-          <p>"I love my job! My students are funny and friendly. I feel happy at work every day."</p>
-          <div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">
-            Question number:
-            <select class="match-sel" id="rb_a" onchange="saveAll()">
-              <option value="">--</option>
-              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="rb-para-block">
-          <div class="rb-para-num">Paragraph B</div>
-          <p>"I work at a language school. It is in a big building downtown. My students study Spanish there."</p>
-          <div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">
-            Question number:
-            <select class="match-sel" id="rb_b" onchange="saveAll()">
-              <option value="">--</option>
-              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="rb-para-block">
-          <div class="rb-para-num">Paragraph C</div>
-          <p>"At home, I usually eat dinner with my husband Marco. We like Japanese food. After dinner, I read a book or watch TV."</p>
-          <div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">
-            Question number:
-            <select class="match-sel" id="rb_c" onchange="saveAll()">
-              <option value="">--</option>
-              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="rb-para-block">
-          <div class="rb-para-num">Paragraph D</div>
-          <p>"My students are from many different countries. Some students are from Brazil, Korea, and France. They work hard and they are very friendly."</p>
-          <div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">
-            Question number:
-            <select class="match-sel" id="rb_d" onchange="saveAll()">
-              <option value="">--</option>
-              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
-            </select>
-          </div>
-        </div>
-
-        <div class="rb-para-block">
-          <div class="rb-para-num">Paragraph E</div>
-          <p>"I live with my husband Marco and our dog Taco. My husband is from Argentina. We don't have children. My parents live in Mexico City."</p>
-          <div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">
-            Question number:
-            <select class="match-sel" id="rb_e" onchange="saveAll()">
-              <option value="">--</option>
-              <option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option>
-            </select>
-          </div>
-        </div>
-
+        <div class="part-instructions">Read Elena's profile and match each question with the correct paragraph. (5 points — 1 pt each)<br><button class="es-toggle" onclick="toggleEs('es-rb')">Ver en espanol</button><div class="es-text" id="es-rb">Lee el perfil de Elena y selecciona el numero de la pregunta que corresponde a cada parrafo.</div></div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:14px 18px;margin-bottom:18px;font-size:.9em;color:#1e40af;"><strong>Questions:</strong><ol style="padding-left:20px;margin-top:6px;line-height:2;"><li>Where do you work?</li><li>What do you do after work?</li><li>Do you like your job?</li><li>What about your family?</li><li>Who are your students?</li></ol></div>
+        <div class="rb-para-block"><div class="rb-para-num">Paragraph A</div><p>"I love my job! My students are funny and friendly. I feel happy at work every day."</p><div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">Question number: <select class="match-sel" id="rb_a" onchange="saveAll();updateProgress()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
+        <div class="rb-para-block"><div class="rb-para-num">Paragraph B</div><p>"I work at a language school. It is in a big building downtown. My students study Spanish there."</p><div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">Question number: <select class="match-sel" id="rb_b" onchange="saveAll();updateProgress()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
+        <div class="rb-para-block"><div class="rb-para-num">Paragraph C</div><p>"At home, I usually eat dinner with my husband Marco. We like Japanese food. After dinner, I read a book or watch TV."</p><div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">Question number: <select class="match-sel" id="rb_c" onchange="saveAll();updateProgress()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
+        <div class="rb-para-block"><div class="rb-para-num">Paragraph D</div><p>"My students are from many different countries. Some students are from Brazil, Korea, and France. They work hard and they are very friendly."</p><div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">Question number: <select class="match-sel" id="rb_d" onchange="saveAll();updateProgress()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
+        <div class="rb-para-block"><div class="rb-para-num">Paragraph E</div><p>"I live with my husband Marco and our dog Taco. My husband is from Argentina. We don't have children. My parents live in Mexico City."</p><div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:.88em;font-weight:600;color:var(--secondary);">Question number: <select class="match-sel" id="rb_e" onchange="saveAll();updateProgress()"><option value="">--</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select></div></div>
       </div>
     </div>
 
-    <!-- ═══════════════════════════════
-         III. WRITING
-    ═══════════════════════════════ -->
     <div class="section">
-      <div class="section-header writing">
-        <span class="icon">✍️</span>
-        <h2>III. Writing</h2>
-        <span class="pts">12 pts</span>
-      </div>
+      <div class="section-header writing"><span class="icon">✍️</span><h2>III. Writing</h2><span class="pts">12 pts</span></div>
       <div class="section-body">
-
-        <div class="part-instructions">
-          Think about two (2) people you know and write about them. Use <strong>at least 40 words in total</strong> (about 20 per person). Use the questions below to help you organize your ideas.
-          <br><button class="es-toggle" onclick="toggleEs('es-wr')">🌐 Ver en español</button>
-          <div class="es-text" id="es-wr">Piensa en dos (2) personas que conoces y escribe sobre ellas. Usa <strong>al menos 40 palabras en total</strong>. Usa las preguntas para organizar tus ideas. Sé original — no copies ideas de este test.</div>
-        </div>
-
-        <div class="writing-guide">
-          <ol>
-            <li>What's his/her occupation?</li>
-            <li>Where does he/she work?</li>
-            <li>What time does he/she start and finish work?</li>
-            <li>Does he/she have lunch at work?</li>
-            <li>Does he/she like his/her job?</li>
-          </ol>
-        </div>
-
-        <textarea id="writingText" placeholder="Write about two people you know here…" oninput="updateWordCount();saveAll()"></textarea>
-        <div class="word-count-bar">
-          Words: <span id="wordCountDisplay">0</span> / 40 minimum
-        </div>
-
-        <!-- Gemini Writing block -->
+        <div class="part-instructions">Think about two (2) people you know and write about them. Use <strong>at least 40 words in total</strong> (about 20 per person). Use the questions below to help you organize your ideas.<br><button class="es-toggle" onclick="toggleEs('es-wr')">Ver en espanol</button><div class="es-text" id="es-wr">Piensa en dos personas que conoces y escribe sobre ellas. Usa <strong>al menos 40 palabras en total</strong>. Se original, no copies ideas de este test.</div></div>
+        <ol style="padding-left:20px;font-size:.9em;color:var(--muted);line-height:2;margin-bottom:14px;">
+          <li>What's his/her occupation?</li>
+          <li>Where does he/she work?</li>
+          <li>What time does he/she start and finish work?</li>
+          <li>Does he/she have lunch at work?</li>
+          <li>Does he/she like his/her job?</li>
+        </ol>
+        <textarea id="writingText" placeholder="Write about two people you know here..." oninput="updateWordCount();saveAll();updateProgress()"></textarea>
+        <div class="word-count-bar">Words: <span id="wordCountDisplay">0</span> / 40 minimum</div>
         <div class="gemini-block">
           <h3>✨ Writing evaluation with Gemini</h3>
-          <p>Click the button below to copy the evaluation prompt. Paste it in Gemini, read <strong>Bloque 2</strong> of the response, and enter the scores in the fields that appear after calculating your result.</p>
+          <p>Click the button to copy the evaluation prompt. Paste it in Gemini, read <strong>Bloque 2</strong> of the response, and enter the scores in the rubric below.</p>
           <button class="gemini-btn" onclick="copyForGemini()">📋 Copy prompt for Gemini</button>
-          <div class="gemini-warn" id="geminiWarnWriting">⚠️ Write something in the text field before copying the prompt.</div>
+          <div class="gemini-warn" id="geminiWarn">⚠️ Write something in the text field before copying the prompt.</div>
         </div>
-
-        <!-- Rubric -->
         <div class="rubric-block">
           <div class="rubric-header">📋 Writing Rubric — Complete after Gemini review</div>
-
           <div class="rubric-item">
-            <label>1. Coherencia y Extensión (máx. 4 pts)</label>
-            <div class="rubric-options">
-              <label><input type="radio" name="rub1" value="4" onchange="saveAll()"><span>4 pts — 40+ palabras, 5+ ideas</span></label>
-              <label><input type="radio" name="rub1" value="3.2" onchange="saveAll()"><span>3,2 pts — 30–39 palabras, 4 ideas</span></label>
-              <label><input type="radio" name="rub1" value="2.4" onchange="saveAll()"><span>2,4 pts — 20–29 palabras, 3 ideas</span></label>
-              <label><input type="radio" name="rub1" value="1.2" onchange="saveAll()"><span>1,2 pts — 10–19 palabras, 2 ideas</span></label>
-              <label><input type="radio" name="rub1" value="0" onchange="saveAll()"><span>0 pts — sin respuesta</span></label>
+            <label>1. Coherencia y Extension <span style="color:var(--muted);font-weight:400;">(max. 4 pts)</span></label>
+            <div class="rub-options">
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub1" value="4"><div><div class="rub-level">Totalmente Logrado <span class="rub-pts">4 pts</span></div><div class="rub-desc">40+ palabras, 5+ ideas completas y coherentes con la tarea.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub1" value="3.2"><div><div class="rub-level">Logrado <span class="rub-pts">3,2 pts</span></div><div class="rub-desc">30–39 palabras, al menos 4 ideas completas.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub1" value="2.4"><div><div class="rub-level">Parcialmente Logrado <span class="rub-pts">2,4 pts</span></div><div class="rub-desc">20–29 palabras, al menos 3 ideas completas.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub1" value="1.2"><div><div class="rub-level">Insuficientemente Logrado <span class="rub-pts">1,2 pts</span></div><div class="rub-desc">10–19 palabras, 2 ideas completas.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub1" value="0"><div><div class="rub-level">No Logrado <span class="rub-pts zero">0 pts</span></div><div class="rub-desc">Menos de 10 palabras o sin respuesta.</div></div><span class="check-icon">✓</span></label>
             </div>
           </div>
-
           <div class="rubric-item">
-            <label>2. Vocabulario (máx. 3 pts)</label>
-            <div class="rubric-options">
-              <label><input type="radio" name="rub2" value="3" onchange="saveAll()"><span>3 pts — 8+ palabras</span></label>
-              <label><input type="radio" name="rub2" value="2.4" onchange="saveAll()"><span>2,4 pts — 6–7 palabras</span></label>
-              <label><input type="radio" name="rub2" value="1.8" onchange="saveAll()"><span>1,8 pts — 5 palabras</span></label>
-              <label><input type="radio" name="rub2" value="0.9" onchange="saveAll()"><span>0,9 pts — 3–4 palabras</span></label>
-              <label><input type="radio" name="rub2" value="0" onchange="saveAll()"><span>0 pts — sin respuesta</span></label>
+            <label>2. Vocabulario <span style="color:var(--muted);font-weight:400;">(max. 3 pts)</span></label>
+            <div class="rub-options">
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub2" value="3"><div><div class="rub-level">Totalmente Logrado <span class="rub-pts">3 pts</span></div><div class="rub-desc">8+ palabras del vocabulario estudiado en contexto adecuado.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub2" value="2.4"><div><div class="rub-level">Logrado <span class="rub-pts">2,4 pts</span></div><div class="rub-desc">6–7 palabras del vocabulario estudiado.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub2" value="1.8"><div><div class="rub-level">Parcialmente Logrado <span class="rub-pts">1,8 pts</span></div><div class="rub-desc">5 palabras del vocabulario estudiado.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub2" value="0.9"><div><div class="rub-level">Insuficientemente Logrado <span class="rub-pts">0,9 pts</span></div><div class="rub-desc">3–4 palabras del vocabulario estudiado.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub2" value="0"><div><div class="rub-level">No Logrado <span class="rub-pts zero">0 pts</span></div><div class="rub-desc">Menos de 3 palabras o sin respuesta.</div></div><span class="check-icon">✓</span></label>
             </div>
           </div>
-
           <div class="rubric-item">
-            <label>3. Gramática (máx. 3 pts)</label>
-            <div class="rubric-options">
-              <label><input type="radio" name="rub3" value="3" onchange="saveAll()"><span>3 pts — sin errores</span></label>
-              <label><input type="radio" name="rub3" value="2.4" onchange="saveAll()"><span>2,4 pts — 2–3 errores</span></label>
-              <label><input type="radio" name="rub3" value="1.8" onchange="saveAll()"><span>1,8 pts — 4–5 errores</span></label>
-              <label><input type="radio" name="rub3" value="0.9" onchange="saveAll()"><span>0,9 pts — 6 errores</span></label>
-              <label><input type="radio" name="rub3" value="0" onchange="saveAll()"><span>0 pts — 7+ errores</span></label>
+            <label>3. Gramatica <span style="color:var(--muted);font-weight:400;">(max. 3 pts)</span></label>
+            <div class="rub-options">
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub3" value="3"><div><div class="rub-level">Totalmente Logrado <span class="rub-pts">3 pts</span></div><div class="rub-desc">Sin errores gramaticales.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub3" value="2.4"><div><div class="rub-level">Logrado <span class="rub-pts">2,4 pts</span></div><div class="rub-desc">2–3 errores que no afectan la comprension.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub3" value="1.8"><div><div class="rub-level">Parcialmente Logrado <span class="rub-pts">1,8 pts</span></div><div class="rub-desc">4–5 errores; el texto sigue siendo comprensible.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub3" value="0.9"><div><div class="rub-level">Insuficientemente Logrado <span class="rub-pts">0,9 pts</span></div><div class="rub-desc">6 errores que limitan la claridad del mensaje.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub3" value="0"><div><div class="rub-level">No Logrado <span class="rub-pts zero">0 pts</span></div><div class="rub-desc">7+ errores o sin respuesta.</div></div><span class="check-icon">✓</span></label>
             </div>
           </div>
-
           <div class="rubric-item">
-            <label>4. Ortografía (máx. 2 pts)</label>
-            <div class="rubric-options">
-              <label><input type="radio" name="rub4" value="2" onchange="saveAll()"><span>2 pts — 1–2 errores</span></label>
-              <label><input type="radio" name="rub4" value="1.6" onchange="saveAll()"><span>1,6 pts — 3–4 errores</span></label>
-              <label><input type="radio" name="rub4" value="1.2" onchange="saveAll()"><span>1,2 pts — 5–6 errores</span></label>
-              <label><input type="radio" name="rub4" value="0.6" onchange="saveAll()"><span>0,6 pts — 7–9 errores</span></label>
-              <label><input type="radio" name="rub4" value="0" onchange="saveAll()"><span>0 pts — 10+ errores</span></label>
+            <label>4. Ortografia <span style="color:var(--muted);font-weight:400;">(max. 2 pts)</span></label>
+            <div class="rub-options">
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub4" value="2"><div><div class="rub-level">Totalmente Logrado <span class="rub-pts">2 pts</span></div><div class="rub-desc">1–2 errores de ortografia que no afectan el mensaje.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub4" value="1.6"><div><div class="rub-level">Logrado <span class="rub-pts">1,6 pts</span></div><div class="rub-desc">3–4 errores de ortografia.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub4" value="1.2"><div><div class="rub-level">Parcialmente Logrado <span class="rub-pts">1,2 pts</span></div><div class="rub-desc">5–6 errores de ortografia.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub4" value="0.6"><div><div class="rub-level">Insuficientemente Logrado <span class="rub-pts">0,6 pts</span></div><div class="rub-desc">7–9 errores de ortografia.</div></div><span class="check-icon">✓</span></label>
+              <label onchange="updateRubric();saveAll();updateProgress()"><input type="radio" name="rub4" value="0"><div><div class="rub-level">No Logrado <span class="rub-pts zero">0 pts</span></div><div class="rub-desc">10+ errores o sin respuesta.</div></div><span class="check-icon">✓</span></label>
             </div>
           </div>
-
+          <div class="rubric-total" id="rubricTotal">Writing total: — / 12 pts</div>
         </div>
-
       </div>
     </div>
 
-    <!-- Blank warning -->
-    <div id="blankWarning">
-      <strong>⚠️ Hay preguntas sin responder</strong>
-      <ul id="blankList"></ul>
-      <button class="dismiss-btn" onclick="document.getElementById('blankWarning').style.display='none';calculateFinalGrade()">Continuar y ver resultados →</button>
+    <div class="progress-wrap">
+      <div class="progress-label"><span id="progressLabel">0 de 26 preguntas respondidas</span><span id="progressPct">0%</span></div>
+      <div class="progress-bar"><div id="progressFill"></div></div>
     </div>
 
+    <div id="blankWarning"><strong>⚠️ Hay preguntas sin responder</strong><ul id="blankList"></ul><button class="dismiss-btn" onclick="document.getElementById('blankWarning').style.display='none';calculateFinalGrade()">Continuar y ver resultados →</button></div>
     <button class="calculate-btn" onclick="checkBlanksAndCalculate()">✓ Calcular mi resultado</button>
 
-    <!-- ═══════════════════════════════
-         RESULTS
-    ═══════════════════════════════ -->
     <div id="results">
-
       <div class="results-card">
         <h3 id="resultsTitle">Tus resultados</h3>
         <div class="score-row"><span>🎧 Listening</span><span id="scoreListening">—</span></div>
@@ -703,9 +360,14 @@ audio { width:100%; border-radius:8px; margin-bottom:8px; }
         <div class="score-row"><span><strong>Total</strong></span><span id="scoreTotal">—</span></div>
         <div id="gradeDisplay"></div>
       </div>
-
-      <!-- Filter tabs -->
-      <div class="filter-tabs" id="filterTabs">
+      <div class="summary-cards">
+        <div class="summary-card"><div class="s-title">🎧 Listening</div><div class="s-score" id="sumListening">—</div><div class="s-dots" id="dotsListening"></div></div>
+        <div class="summary-card"><div class="s-title">📖 Reading</div><div class="s-score" id="sumReading">—</div><div class="s-dots" id="dotsReading"></div></div>
+        <div class="summary-card"><div class="s-title">✍️ Writing</div><div class="s-score" id="sumWriting">—</div><div class="s-dots" id="dotsWriting"></div></div>
+      </div>
+      <div id="msgListening"></div>
+      <div id="msgReading"></div>
+      <div class="filter-tabs">
         <button class="filter-tab active" onclick="filterFeedback('all',event)">📋 Todo</button>
         <button class="filter-tab" onclick="filterFeedback('listening',event)">🎧 Listening</button>
         <button class="filter-tab" onclick="filterFeedback('reading',event)">📖 Reading</button>
@@ -713,433 +375,182 @@ audio { width:100%; border-radius:8px; margin-bottom:8px; }
         <button class="filter-tab" onclick="filterFeedback('correct',event)">✓ Correctas</button>
         <button class="filter-tab" onclick="filterFeedback('incorrect',event)">✗ Incorrectas</button>
       </div>
-
       <div id="feedbackContent"></div>
-
     </div>
 
   </div>
 </div>
-
 <script>
-const SAVE_KEY = 'mocktest_inu1101_eot_v1';
+const SAVE_KEY='mocktest_inu1101_eot_v2';
 let saveTimer;
-
-// ── AUTOSAVE ──
-function saveAll() {
+const TOTAL_Qs=26;
+function g(id){const el=document.getElementById(id);return el?el.value:'';}
+function getRadio(name){const c=document.querySelector('input[name="'+name+'"]:checked');return c?c.value:'';}
+function norm(s){return s.trim().toLowerCase().replace(/\s+/g,' ');}
+function calcGrade(score,max){const p=(score/max)*100;const gr=p<60?(1+(p/60)*3):(4+((p-60)/40)*3);return Math.min(7,Math.max(1,Math.round(gr*10)/10));}
+function saveAll(){
   clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => {
-    const data = {
-      studentName: g('studentName'),
-      lb1:g('lb1'),lb2:g('lb2'),lb3:g('lb3'),lb4:g('lb4'),lb5:g('lb5'),lb6:g('lb6'),
-      ra1:g('ra1'),ra2:g('ra2'),ra3:g('ra3'),ra4:g('ra4'),ra5:g('ra5'),ra6:g('ra6'),ra7:g('ra7'),
-      rb_a:g('rb_a'),rb_b:g('rb_b'),rb_c:g('rb_c'),rb_d:g('rb_d'),rb_e:g('rb_e'),
-      writingText:g('writingText'),
-      la1:getRadio('la1'),la2:getRadio('la2'),la3:getRadio('la3'),
-      la4:getRadio('la4'),la5:getRadio('la5'),la6:getRadio('la6'),
-      rub1:getRadio('rub1'),rub2:getRadio('rub2'),rub3:getRadio('rub3'),rub4:getRadio('rub4'),
-    };
-    localStorage.setItem(SAVE_KEY, JSON.stringify(data));
+  saveTimer=setTimeout(()=>{
+    const data={studentName:g('studentName'),lb1:g('lb1'),lb2:g('lb2'),lb3:g('lb3'),lb4:g('lb4'),lb5:g('lb5'),lb6:g('lb6'),ra1:g('ra1'),ra2:g('ra2'),ra3:g('ra3'),ra4:g('ra4'),ra5:g('ra5'),ra6:g('ra6'),ra7:g('ra7'),rb_a:g('rb_a'),rb_b:g('rb_b'),rb_c:g('rb_c'),rb_d:g('rb_d'),rb_e:g('rb_e'),writingText:g('writingText'),la1:getRadio('la1'),la2:getRadio('la2'),la3:getRadio('la3'),la4:getRadio('la4'),la5:getRadio('la5'),la6:getRadio('la6'),rub1:getRadio('rub1'),rub2:getRadio('rub2'),rub3:getRadio('rub3'),rub4:getRadio('rub4')};
+    localStorage.setItem(SAVE_KEY,JSON.stringify(data));
     flashToast();
-  }, 900);
+  },900);
 }
-
-function g(id) { const el=document.getElementById(id); return el?el.value:''; }
-function getRadio(name) { const c=document.querySelector(`input[name="${name}"]:checked`); return c?c.value:''; }
-
-function loadSaved() {
-  const raw=localStorage.getItem(SAVE_KEY); if(!raw) return;
+function loadSaved(){
+  const raw=localStorage.getItem(SAVE_KEY);if(!raw)return;
   const d=JSON.parse(raw);
-  ['studentName','lb1','lb2','lb3','lb4','lb5','lb6',
-   'ra1','ra2','ra3','ra4','ra5','ra6','ra7',
-   'rb_a','rb_b','rb_c','rb_d','rb_e','writingText'].forEach(id=>{
-    const el=document.getElementById(id);
-    if(el&&d[id]!==undefined) el.value=d[id];
-  });
-  ['la1','la2','la3','la4','la5','la6','rub1','rub2','rub3','rub4'].forEach(name=>{
-    if(d[name]){const r=document.querySelector(`input[name="${name}"][value="${d[name]}"]`);if(r)r.checked=true;}
-  });
-  updateWordCount();
+  ['studentName','lb1','lb2','lb3','lb4','lb5','lb6','ra1','ra2','ra3','ra4','ra5','ra6','ra7','rb_a','rb_b','rb_c','rb_d','rb_e','writingText'].forEach(id=>{const el=document.getElementById(id);if(el&&d[id]!==undefined)el.value=d[id];});
+  ['la1','la2','la3','la4','la5','la6','rub1','rub2','rub3','rub4'].forEach(name=>{if(d[name]){const r=document.querySelector('input[name="'+name+'"][value="'+d[name]+'"]');if(r)r.checked=true;}});
+  updateWordCount();updateRubric();updateProgress();
   document.getElementById('savedBanner').style.display='flex';
 }
-
-function clearSaved() {
-  localStorage.removeItem(SAVE_KEY);
-  document.getElementById('savedBanner').style.display='none';
-}
-
-function flashToast() {
-  const t=document.getElementById('saveToast');
-  t.style.display='block';
-  setTimeout(()=>{t.style.display='none';},1800);
-}
-
-// ── AUDIO COUNTER ──
+function clearAllAnswers(){localStorage.removeItem(SAVE_KEY);location.reload();}
+function flashToast(){const t=document.getElementById('saveToast');t.style.display='block';setTimeout(()=>{t.style.display='none';},1800);}
 const playCounts={};
-function trackPlay(audioId) {
-  if(!playCounts[audioId]) playCounts[audioId]=0;
+function trackPlay(audioId){
+  if(!playCounts[audioId])playCounts[audioId]=0;
   playCounts[audioId]++;
   const counter=document.getElementById('counter_'+audioId);
   const count=playCounts[audioId];
-  if(count===1){
-    counter.textContent='Plays: 1 / 2 — 1 reproducción restante';
-    counter.className='play-counter warning';
-  } else if(count>=2){
-    counter.textContent=`⚠️ Plays: ${count} — límite de práctica superado`;
-    counter.className='play-counter limit';
-  }
+  if(count===1){counter.textContent='Plays: 1 / 2 — 1 reproduccion restante';counter.className='play-counter warning';}
+  else if(count>=2){counter.textContent='Plays: '+count+' — limite de practica superado';counter.className='play-counter limit';}
 }
-
-// ── WORD COUNT ──
-function updateWordCount() {
-  const text=g('writingText').trim();
-  const words=text===''?0:text.split(/\s+/).length;
-  const el=document.getElementById('wordCountDisplay');
-  el.textContent=words;
-  el.className=words>=40?'ok':words>=20?'low':'';
+function updateWordCount(){const text=g('writingText').trim();const words=text===''?0:text.split(/\s+/).length;const el=document.getElementById('wordCountDisplay');el.textContent=words;el.className=words>=40?'ok':words>=20?'low':'';}
+function updateRubric(){
+  document.querySelectorAll('.rub-options label').forEach(lbl=>{const radio=lbl.querySelector('input[type="radio"]');lbl.classList.toggle('selected-rub',radio&&radio.checked);});
+  const t=(parseFloat(getRadio('rub1'))||0)+(parseFloat(getRadio('rub2'))||0)+(parseFloat(getRadio('rub3'))||0)+(parseFloat(getRadio('rub4'))||0);
+  const el=document.getElementById('rubricTotal');if(el)el.textContent='Writing total: '+(t>0?t.toFixed(1):'—')+' / 12 pts';
 }
-
-// ── TOGGLE SPANISH ──
+function updateProgress(){
+  let answered=0;
+  for(let i=1;i<=6;i++)if(getRadio('la'+i))answered++;
+  ['lb1','lb2','lb3','lb4','lb5','lb6'].forEach(id=>{if(g(id))answered++;});
+  for(let i=1;i<=7;i++)if(g('ra'+i).trim())answered++;
+  ['rb_a','rb_b','rb_c','rb_d','rb_e'].forEach(id=>{if(g(id))answered++;});
+  if(g('writingText').trim())answered++;
+  ['rub1','rub2','rub3','rub4'].forEach(name=>{if(getRadio(name))answered++;});
+  const pct=Math.round((answered/TOTAL_Qs)*100);
+  const fill=document.getElementById('progressFill');
+  const label=document.getElementById('progressLabel');
+  const pctEl=document.getElementById('progressPct');
+  if(!fill)return;
+  fill.style.width=pct+'%';fill.className=answered===TOTAL_Qs?'complete':'';
+  if(label)label.textContent=answered===TOTAL_Qs?'Todas las preguntas respondidas!':answered+' de '+TOTAL_Qs+' preguntas respondidas';
+  if(pctEl)pctEl.textContent=pct+'%';
+}
 function toggleEs(id){const el=document.getElementById(id);el.style.display=el.style.display==='block'?'none':'block';}
-
-// ── CLOSE MODAL ──
 function closeModal(id){document.getElementById(id).classList.remove('active');}
-
-// ── BLANK CHECK ──
-function checkBlanksAndCalculate() {
+function checkBlanksAndCalculate(){
   const blanks=[];
-  for(let i=1;i<=6;i++){if(!getRadio('la'+i)) blanks.push({label:`Listening A — Pregunta ${i}`,targetId:'mc-grid-la'});}
-  ['lb1','lb2','lb3','lb4','lb5','lb6'].forEach((id,idx)=>{if(!g(id)) blanks.push({label:`Listening B — Ítem ${idx+1}`,targetId:id});});
-  for(let i=1;i<=7;i++){if(!g('ra'+i).trim()) blanks.push({label:`Reading A — Pregunta ${i}`,targetId:'ra'+i});}
-  ['rb_a','rb_b','rb_c','rb_d','rb_e'].forEach((id,idx)=>{if(!g(id)) blanks.push({label:`Reading B — Párrafo ${String.fromCharCode(65+idx)}`,targetId:id});});
-  if(!g('writingText').trim()) blanks.push({label:'Writing — texto vacío',targetId:'writingText'});
-
+  for(let i=1;i<=6;i++)if(!getRadio('la'+i))blanks.push({label:'Listening A — Pregunta '+i,targetId:'la'+i+'_a'});
+  ['lb1','lb2','lb3','lb4','lb5','lb6'].forEach((id,i)=>{if(!g(id))blanks.push({label:'Listening B — Item '+(i+1),targetId:id});});
+  for(let i=1;i<=7;i++)if(!g('ra'+i).trim())blanks.push({label:'Reading A — Pregunta '+i,targetId:'ra'+i});
+  ['rb_a','rb_b','rb_c','rb_d','rb_e'].forEach((id,i)=>{if(!g(id))blanks.push({label:'Reading B — Parrafo '+String.fromCharCode(65+i),targetId:id});});
+  if(!g('writingText').trim())blanks.push({label:'Writing — texto vacio',targetId:'writingText'});
   if(blanks.length===0){document.getElementById('blankWarning').style.display='none';calculateFinalGrade();return;}
-
-  const list=document.getElementById('blankList');
-  list.innerHTML='';
-  blanks.forEach(b=>{
-    const li=document.createElement('li');
-    const btn=document.createElement('button');
-    btn.className='blank-link';
-    btn.textContent=b.label;
-    btn.onclick=()=>{
-      const el=document.getElementById(b.targetId);
-      if(el){el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>el.focus(),400);}
-    };
-    li.appendChild(btn);
-    list.appendChild(li);
-  });
-  const warning=document.getElementById('blankWarning');
-  warning.style.display='block';
-  warning.scrollIntoView({behavior:'smooth',block:'center'});
+  const list=document.getElementById('blankList');list.innerHTML='';
+  blanks.forEach(b=>{const li=document.createElement('li');const btn=document.createElement('button');btn.className='blank-link';btn.textContent=b.label;btn.onclick=()=>{const el=document.getElementById(b.targetId);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(()=>el.focus(),400);}};li.appendChild(btn);list.appendChild(li);});
+  const w=document.getElementById('blankWarning');w.style.display='block';w.scrollIntoView({behavior:'smooth',block:'center'});
 }
-
-// ── ANSWER KEYS ──
 const LA_KEYS={la1:'b',la2:'c',la3:'a',la4:'c',la5:'a',la6:'a'};
 const LB_KEYS={lb1:'AT HOME',lb2:'TOAST AND EGGS',lb3:'TEA',lb4:'AT WORK',lb5:'A SANDWICH',lb6:'LATE'};
-const RA_KEYS={
-  ra1:['mexico city'],
-  ra2:['spanish teacher','a spanish teacher','a teacher','teacher'],
-  ra3:['toronto','toronto, canada','toronto canada'],
-  ra4:['three in the afternoon','three o\'clock','three','3 in the afternoon','3pm','3 pm','3:00'],
-  ra5:['her husband marco','her husband and their dog','marco and their dog','marco','her husband'],
-  ra6:['sandwiches and fruit','sandwiches','fruit and sandwiches'],
-  ra7:['bus']
-};
+const RA_KEYS={ra1:['mexico city'],ra2:['spanish teacher','a spanish teacher','a teacher','teacher'],ra3:['toronto','toronto, canada','toronto canada'],ra4:['three in the afternoon','three o\'clock','three','3 in the afternoon','3pm','3 pm','3:00'],ra5:['her husband marco','her husband and their dog','marco and their dog','marco','her husband'],ra6:['sandwiches and fruit','sandwiches','fruit and sandwiches'],ra7:['bus']};
 const RB_KEYS={rb_a:'3',rb_b:'1',rb_c:'2',rb_d:'5',rb_e:'4'};
-
-function norm(str){return str.trim().toLowerCase().replace(/\s+/g,' ');}
-function calcGrade(score,max){const pct=(score/max)*100;const g=pct<60?(1+(pct/60)*3):(4+((pct-60)/40)*3);return Math.min(7,Math.max(1,Math.round(g*10)/10));}
-
-// ── CALCULATE FINAL GRADE ──
-function calculateFinalGrade() {
-  // Listening A
-  let autoLA=0;
-  Object.keys(LA_KEYS).forEach(id=>{if(getRadio(id)===LA_KEYS[id])autoLA++;});
-
-  // Listening B
-  let autoLB=0;
-  Object.keys(LB_KEYS).forEach(id=>{if(g(id)===LB_KEYS[id])autoLB++;});
-
-  // Reading A
-  let autoRA=0;
-  for(let i=1;i<=7;i++){
-    const student=norm(g('ra'+i));
-    const accepted=RA_KEYS['ra'+i];
-    if(accepted.some(ans=>student===ans||student.includes(ans)||ans.includes(student)))autoRA++;
-  }
-
-  // Reading B
-  let autoRB=0;
-  Object.keys(RB_KEYS).forEach(id=>{if(g(id)===RB_KEYS[id])autoRB++;});
-
-  // Writing
-  const autoWriting=(parseFloat(getRadio('rub1'))||0)+(parseFloat(getRadio('rub2'))||0)
-                   +(parseFloat(getRadio('rub3'))||0)+(parseFloat(getRadio('rub4'))||0);
-
-  const autoListening=autoLA+autoLB;
-  const autoReading=autoRA+autoRB;
-  const grandTotal=autoListening+autoReading+autoWriting;
-
-  // Score display
-  document.getElementById('scoreListening').textContent=`${autoListening} / 12`;
-  document.getElementById('scoreReading').textContent=`${autoReading} / 12`;
-  document.getElementById('scoreWriting').textContent=`${autoWriting.toFixed(1)} / 12`;
-  document.getElementById('scoreTotal').innerHTML=`<strong>${grandTotal.toFixed(1)} / 36</strong>`;
-
-  // Grade
-  const grade=calcGrade(grandTotal,36);
-  const gradeColor=grade>=4?'#10b981':'#ef4444';
-  const gradeMsg=grade>=6?'🌟 ¡Excelente trabajo!':grade>=4?'✅ ¡Aprobado! Sigue practicando.':'💪 Necesitas más práctica. ¡Tú puedes!';
-  document.getElementById('gradeDisplay').innerHTML=`
-    <div class="grade-display">
-      <div class="grade-number" style="color:${gradeColor}">${grade.toFixed(1)}</div>
-      <div class="grade-label">Nota final (escala chilena — 60% = 4,0)</div>
-      <div class="grade-msg">${gradeMsg}</div>
-    </div>`;
-
+function buildSummaryDots(containerId,items){const el=document.getElementById(containerId);if(!el)return;el.innerHTML=items.map(ok=>'<div class="dot '+(ok?'ok':'err')+'" title="'+(ok?'Correcto':'Incorrecto')+'"></div>').join('');}
+function buildSectionMsg(containerId,correct,total,tips){
+  const el=document.getElementById(containerId);if(!el)return;
+  const pct=correct/total;let cls,title,intro;
+  if(pct>=0.83){cls='msg-great';title='Excelente!';intro='Tu desempeno en esta seccion fue muy bueno.';}
+  else if(pct>=0.58){cls='msg-good';title='Buen trabajo!';intro='Vas por buen camino. Revisa estos puntos:';}
+  else{cls='msg-low';title='Sigue practicando';intro='Presta atencion a las siguientes areas:';}
+  const tipsHtml=tips.length?'<ul class="msg-tips">'+tips.map(t=>'<li>'+t+'</li>').join('')+'</ul>':'';
+  el.innerHTML='<div class="personalized-msg '+cls+'"><strong>'+title+'</strong> '+intro+tipsHtml+'</div>';
+}
+function calculateFinalGrade(){
+  let autoLA=0;const laDots=[];
+  Object.keys(LA_KEYS).forEach(id=>{const ok=getRadio(id)===LA_KEYS[id];if(ok)autoLA++;laDots.push(ok);});
+  let autoLB=0;const lbDots=[];
+  Object.keys(LB_KEYS).forEach(id=>{const ok=g(id)===LB_KEYS[id];if(ok)autoLB++;lbDots.push(ok);});
+  let autoRA=0;const raDots=[];
+  for(let i=1;i<=7;i++){const student=norm(g('ra'+i));const accepted=RA_KEYS['ra'+i];const ok=accepted.some(ans=>student===ans||student.includes(ans)||ans.includes(student));if(ok)autoRA++;raDots.push(ok);}
+  let autoRB=0;const rbDots=[];
+  Object.keys(RB_KEYS).forEach(id=>{const ok=g(id)===RB_KEYS[id];if(ok)autoRB++;rbDots.push(ok);});
+  const autoWriting=(parseFloat(getRadio('rub1'))||0)+(parseFloat(getRadio('rub2'))||0)+(parseFloat(getRadio('rub3'))||0)+(parseFloat(getRadio('rub4'))||0);
+  const wDots=['rub1','rub2','rub3','rub4'].map(name=>{const v=parseFloat(getRadio(name))||0;const maxMap={rub1:4,rub2:3,rub3:3,rub4:2};return v>=maxMap[name]*0.6;});
+  const autoListening=autoLA+autoLB;const autoReading=autoRA+autoRB;const grandTotal=autoListening+autoReading+autoWriting;
+  document.getElementById('scoreListening').textContent=autoListening+' / 12';
+  document.getElementById('scoreReading').textContent=autoReading+' / 12';
+  document.getElementById('scoreWriting').textContent=autoWriting.toFixed(1)+' / 12';
+  document.getElementById('scoreTotal').innerHTML='<strong>'+grandTotal.toFixed(1)+' / 36</strong>';
+  const grade=calcGrade(grandTotal,36);const gradeColor=grade>=4?'#10b981':'#ef4444';
+  const gradeMsg=grade>=6?'Excelente trabajo!':grade>=4?'Aprobado! Sigue practicando.':'Necesitas mas practica. Tu puedes!';
+  document.getElementById('gradeDisplay').innerHTML='<div class="grade-display"><div class="grade-number" style="color:'+gradeColor+'">'+grade.toFixed(1)+'</div><div class="grade-label">Nota final (escala chilena — 60% = 4,0)</div><div class="grade-msg">'+gradeMsg+'</div></div>';
   const name=g('studentName')||'Estudiante';
-  document.getElementById('resultsTitle').textContent=`Resultados de ${name}`;
-
+  document.getElementById('resultsTitle').textContent='Resultados de '+name;
+  document.getElementById('sumListening').textContent=autoListening+' / 12';
+  document.getElementById('sumReading').textContent=autoReading+' / 12';
+  document.getElementById('sumWriting').textContent=autoWriting.toFixed(1)+' / 12';
+  buildSummaryDots('dotsListening',[...laDots,...lbDots]);
+  buildSummaryDots('dotsReading',[...raDots,...rbDots]);
+  buildSummaryDots('dotsWriting',wDots);
+  const laTips=laDots.some(ok=>!ok)?['Escucha las conversaciones con atencion e identifica las palabras clave de familia y objetos.']:[];
+  const lbTips=lbDots.some(ok=>!ok)?['Practica escuchar informacion especifica sobre rutinas diarias.']:[];
+  buildSectionMsg('msgListening',autoListening,12,[...laTips.slice(0,1),...lbTips.slice(0,1)]);
+  const raTips=raDots.some(ok=>!ok)?['Lee el texto completo primero, luego busca la informacion especifica de cada pregunta.']:[];
+  const rbTips=rbDots.some(ok=>!ok)?['Lee cada parrafo completo antes de decidir que pregunta responde.']:[];
+  buildSectionMsg('msgReading',autoReading,12,[...raTips.slice(0,1),...rbTips.slice(0,1)]);
   document.getElementById('results').style.display='block';
   buildFeedback(autoLA,autoLB,autoRA,autoRB,autoWriting);
   document.getElementById('results').scrollIntoView({behavior:'smooth'});
 }
-
-// ── BUILD FEEDBACK ──
-function buildFeedback(autoLA,autoLB,autoRA,autoRB,autoWriting) {
-
-  // LA
-  const LA_OPTIONS={
-    la1:['Jake\'s sister','Jake\'s cousin','Jake\'s girlfriend','Jake\'s neighbor'],
-    la2:['cousin','neighbor','sister','friend'],
-    la3:['A brother and a grandmother','A sister and a grandmother','A brother and a sister','Two brothers and a grandmother'],
-    la4:['Speaker 2\'s sister','Speaker 2\'s mother','Speaker 2\'s grandmother','Speaker 2\'s friend'],
-    la5:['It\'s old but very good','It\'s new and very good','It\'s heavy and fast','It\'s small and expensive'],
-    la6:['It\'s not new, but it\'s fast and cheap','It\'s new and fast','It\'s old and expensive','It\'s fast and expensive']
-  };
-  const LA_Q=['Q1 — Who is Rosa?','Q2 — Beth is Jake\'s ____','Q3 — Who does Speaker 2 have in his family?','Q4 — Who is Clara?','Q5 — What\'s true about the camera?','Q6 — How does the owner describe the bicycle?'];
-  const LA_EXP=['En la Conversación 1, alguien pregunta sobre Rosa. Jake dice "She\'s my cousin."','Jake menciona "My sister\'s name is Beth."','El hablante menciona a su hermano Ben y su abuela Clara.','El hablante dice "I have a grandmother. Her name is Clara."','El dueño dice "It\'s old, but it\'s very good" y "it\'s very small and cheap."','El dueño dice "it isn\'t new", "it\'s fast" y "it\'s very cheap."'];
+function buildFeedback(autoLA,autoLB,autoRA,autoRB,autoWriting){
+  const LA_OPTIONS={la1:["Jake's sister","Jake's cousin","Jake's girlfriend","Jake's neighbor"],la2:['cousin','neighbor','sister','friend'],la3:['A brother and a grandmother','A sister and a grandmother','A brother and a sister','Two brothers and a grandmother'],la4:["Speaker 2's sister","Speaker 2's mother","Speaker 2's grandmother","Speaker 2's friend"],la5:["It's old but very good","It's new and very good","It's heavy and fast","It's small and expensive"],la6:["It's not new, but it's fast and cheap","It's new and fast","It's old and expensive","It's fast and expensive"]};
+  const LA_Q=['Q1 — Who is Rosa?',"Q2 — Beth is Jake's ____",'Q3 — Who does Speaker 2 have in his family?','Q4 — Who is Clara?',"Q5 — What's true about the camera?",'Q6 — How does the owner describe the bicycle?'];
+  const LA_EXP=["En Conv. 1, Jake dice 'She's my cousin.' al referirse a Rosa.","Jake menciona 'My sister's name is Beth.'","El hablante dice 'I have a brother. His name is Ben' y 'I have a grandmother. Her name is Clara.'","El hablante dice 'I have a grandmother. Her name is Clara.'","El dueno dice 'It's old, but it's very good' y 'it's very small and cheap.'","El dueno dice 'it isn't new', 'it's fast' y 'it's very cheap.'"];
   let laHTML='';
-  ['la1','la2','la3','la4','la5','la6'].forEach((id,i)=>{
-    const student=getRadio(id);
-    const correct=LA_KEYS[id];
-    const ok=student===correct;
-    const studentText=student?LA_OPTIONS[id]['abcd'.indexOf(student)]:'(sin respuesta)';
-    const correctText=LA_OPTIONS[id]['abcd'.indexOf(correct)];
-    laHTML+=`<div class="feedback-item" data-result="${ok?'correct':'incorrect'}">
-      <div class="fi-label">${LA_Q[i]} <span class="tag ${ok?'correct-tag':'incorrect-tag'}">${ok?'✓ Correcto':'✗ Incorrecto'}</span></div>
-      <div class="student-ans">Tu respuesta: <strong>${student?student+') '+studentText:'(sin respuesta)'}</strong></div>
-      ${!ok?`<div class="correct-ans">✓ Respuesta correcta: ${correct}) ${correctText}</div>`:''}
-      <div class="explanation">${LA_EXP[i]}</div>
-    </div>`;
-  });
-
-  // LB
+  ['la1','la2','la3','la4','la5','la6'].forEach((id,i)=>{const student=getRadio(id);const correct=LA_KEYS[id];const ok=student===correct;const studentText=student?LA_OPTIONS[id]['abcd'.indexOf(student)]:'(sin respuesta)';const correctText=LA_OPTIONS[id]['abcd'.indexOf(correct)];laHTML+='<div class="feedback-item '+(ok?'fb-correct':'fb-incorrect')+'"><div class="fi-label">'+LA_Q[i]+' <span class="tag '+(ok?'correct-tag':'incorrect-tag')+'">'+(ok?'Correcto':'Incorrecto')+'</span></div><div class="student-ans">Tu respuesta: <strong>'+(student?student+') '+studentText:'(sin respuesta)')+'</strong></div>'+((!ok)?'<div class="correct-ans">Respuesta correcta: '+correct+') '+correctText+'</div>':'')+'<div class="explanation">'+LA_EXP[i]+'</div></div>';});
   const LB_LABELS=['David eats breakfast','At home, David usually eats','David drinks (breakfast)','David eats lunch','For lunch, David usually eats','David finishes work'];
-  const LB_EXP=['David dice "I always eat breakfast at home."','David dice "I usually eat toast and eggs."','David dice "I don\'t like coffee. I drink tea."','David dice "I eat lunch at work."','David dice "I usually eat a sandwich."','David dice "No, I finish work late."'];
+  const LB_EXP=["David dice 'I always eat breakfast at home.'","David dice 'I usually eat toast and eggs.'","David dice 'I don't like coffee. I drink tea.'","David dice 'I eat lunch at work.'","David dice 'I usually eat a sandwich.'","David dice 'No, I finish work late.'"];
   let lbHTML='';
-  ['lb1','lb2','lb3','lb4','lb5','lb6'].forEach((id,i)=>{
-    const student=g(id);
-    const correct=LB_KEYS[id];
-    const ok=student===correct;
-    lbHTML+=`<div class="feedback-item" data-result="${ok?'correct':'incorrect'}">
-      <div class="fi-label">Ítem ${i+1} — ${LB_LABELS[i]} <span class="tag ${ok?'correct-tag':'incorrect-tag'}">${ok?'✓ Correcto':'✗ Incorrecto'}</span></div>
-      <div class="student-ans">Tu respuesta: <strong>${student||'(sin respuesta)'}</strong></div>
-      ${!ok?`<div class="correct-ans">✓ Respuesta correcta: ${correct}</div>`:''}
-      <div class="explanation">${LB_EXP[i]}</div>
-    </div>`;
-  });
-
-  // RA
-  const RA_STEMS=['Elena is from ____','Elena works as a ____','Elena works in ____','Elena\'s classes finish at ____','Elena lives with ____','At lunch, Elena and her students usually eat ____','Elena always reads a book on the ____'];
+  ['lb1','lb2','lb3','lb4','lb5','lb6'].forEach((id,i)=>{const student=g(id);const correct=LB_KEYS[id];const ok=student===correct;lbHTML+='<div class="feedback-item '+(ok?'fb-correct':'fb-incorrect')+'"><div class="fi-label">Item '+(i+1)+' — '+LB_LABELS[i]+' <span class="tag '+(ok?'correct-tag':'incorrect-tag')+'">'+(ok?'Correcto':'Incorrecto')+'</span></div><div class="student-ans">Tu respuesta: <strong>'+(student||'(sin respuesta)')+'</strong></div>'+((!ok)?'<div class="correct-ans">Respuesta correcta: '+correct+'</div>':'')+'<div class="explanation">'+LB_EXP[i]+'</div></div>';});
+  const RA_STEMS=["Elena is from ____","Elena works as a ____","Elena works in ____","Elena's classes finish at ____","Elena lives with ____","At lunch, Elena and her students usually eat ____","Elena always reads a book on the ____"];
   const RA_MODEL=['Mexico City','Spanish teacher / a teacher','Toronto / Toronto, Canada','three in the afternoon / three o\'clock','her husband Marco / her husband and their dog','sandwiches and fruit','bus'];
   const RA_EXP=['El texto dice: "She is from Mexico City."','El texto dice: "Elena Vargas is a Spanish teacher."','El texto dice: "she lives and works in Toronto, Canada."','El texto dice: "Her classes finish at three in the afternoon."','El texto dice: "She lives in a small apartment with her husband, Marco, and their dog, Taco."','El texto dice: "They usually have sandwiches and fruit."','El texto dice: "She always reads a book on the bus."'];
   let raHTML='';
-  for(let i=1;i<=7;i++){
-    const student=g('ra'+i);
-    const accepted=RA_KEYS['ra'+i];
-    const ok=accepted.some(ans=>norm(student)===ans||norm(student).includes(ans)||ans.includes(norm(student)));
-    raHTML+=`<div class="feedback-item" data-result="${ok?'correct':'incorrect'}">
-      <div class="fi-label">Q${i} — ${RA_STEMS[i-1]} <span class="tag ${ok?'correct-tag':'incorrect-tag'}">${ok?'✓ Correcto':'✗ Incorrecto'}</span></div>
-      <div class="student-ans">Tu respuesta: <strong>${student||'(sin respuesta)'}</strong></div>
-      ${!ok?`<div class="correct-ans">✓ Respuesta modelo: ${RA_MODEL[i-1]}</div>`:''}
-      <div class="explanation">${RA_EXP[i-1]}</div>
-    </div>`;
-  }
-
-  // RB
+  for(let i=1;i<=7;i++){const student=g('ra'+i);const accepted=RA_KEYS['ra'+i];const ok=accepted.some(ans=>norm(student)===ans||norm(student).includes(ans)||ans.includes(norm(student)));raHTML+='<div class="feedback-item '+(ok?'fb-correct':'fb-incorrect')+'"><div class="fi-label">Q'+i+' — '+RA_STEMS[i-1]+' <span class="tag '+(ok?'correct-tag':'incorrect-tag')+'">'+(ok?'Correcto':'Incorrecto')+'</span></div><div class="student-ans">Tu respuesta: <strong>'+(student||'(sin respuesta)')+'</strong></div>'+((!ok)?'<div class="correct-ans">Respuesta modelo: '+RA_MODEL[i-1]+'</div>':'')+'<div class="explanation">'+RA_EXP[i-1]+'</div></div>';}
   const RB_PARA=['A','B','C','D','E'];
-  const RB_CORRECT_Q=['3','1','2','5','4'];
-  const RB_EXP=[
-    'El párrafo A responde a "Do you like your job?" — Elena dice "I love my job!"',
-    'El párrafo B responde a "Where do you work?" — Elena describe su lugar de trabajo.',
-    'El párrafo C responde a "What do you do after work?" — Elena describe su rutina en casa.',
-    'El párrafo D responde a "Who are your students?" — Elena describe a sus estudiantes.',
-    'El párrafo E responde a "What about your family?" — Elena habla de su familia.'
-  ];
+  const RB_EXP=['El parrafo A responde a "Do you like your job?" — Elena dice "I love my job!"','El parrafo B responde a "Where do you work?" — Elena describe su lugar de trabajo.','El parrafo C responde a "What do you do after work?" — Elena describe su rutina en casa.','El parrafo D responde a "Who are your students?" — Elena describe a sus estudiantes.','El parrafo E responde a "What about your family?" — Elena habla de su familia.'];
   let rbHTML='';
-  ['rb_a','rb_b','rb_c','rb_d','rb_e'].forEach((id,i)=>{
-    const student=g(id);
-    const correct=RB_KEYS[id];
-    const ok=student===correct;
-    rbHTML+=`<div class="feedback-item" data-result="${ok?'correct':'incorrect'}">
-      <div class="fi-label">Párrafo ${RB_PARA[i]} <span class="tag ${ok?'correct-tag':'incorrect-tag'}">${ok?'✓ Correcto':'✗ Incorrecto'}</span></div>
-      <div class="student-ans">Tu respuesta: Pregunta <strong>${student||'(sin respuesta)'}</strong></div>
-      ${!ok?`<div class="correct-ans">✓ Respuesta correcta: Pregunta ${correct}</div>`:''}
-      <div class="explanation">${RB_EXP[i]}</div>
-    </div>`;
-  });
-
-  // Writing
-  const rubricLabels={rub1:{label:'Coherencia y Extensión',max:4},rub2:{label:'Vocabulario',max:3},rub3:{label:'Gramática',max:3},rub4:{label:'Ortografía',max:2}};
+  ['rb_a','rb_b','rb_c','rb_d','rb_e'].forEach((id,i)=>{const student=g(id);const correct=RB_KEYS[id];const ok=student===correct;rbHTML+='<div class="feedback-item '+(ok?'fb-correct':'fb-incorrect')+'"><div class="fi-label">Parrafo '+RB_PARA[i]+' <span class="tag '+(ok?'correct-tag':'incorrect-tag')+'">'+(ok?'Correcto':'Incorrecto')+'</span></div><div class="student-ans">Tu respuesta: Pregunta <strong>'+(student||'(sin respuesta)')+'</strong></div>'+((!ok)?'<div class="correct-ans">Respuesta correcta: Pregunta '+correct+'</div>':'')+'<div class="explanation">'+RB_EXP[i]+'</div></div>';});
+  const rubricLabels={rub1:{label:'Coherencia y Extension',max:4},rub2:{label:'Vocabulario',max:3},rub3:{label:'Gramatica',max:3},rub4:{label:'Ortografia',max:2}};
   let wHTML='';
-  ['rub1','rub2','rub3','rub4'].forEach(name=>{
-    const val=getRadio(name);
-    const info=rubricLabels[name];
-    wHTML+=`<div class="feedback-item">
-      <div class="fi-label">${info.label} <span class="tag info-tag">${val||'—'} / ${info.max} pts</span></div>
-    </div>`;
-  });
-  wHTML+=`<div class="feedback-item"><strong>Writing total: ${autoWriting.toFixed(1)} / 12 pts</strong></div>`;
-
-  // Assemble with data-section for filter tabs
-  document.getElementById('feedbackContent').innerHTML=`
-    <div class="feedback-part" data-section="listening">
-      <div class="feedback-part-header listening">🎧 Listening A — Conversations (${autoLA} / 6 pts)</div>
-      ${laHTML}
-    </div>
-    <div class="feedback-part" data-section="listening">
-      <div class="feedback-part-header listening">🎧 Listening B — Binary choice (${autoLB} / 6 pts)</div>
-      ${lbHTML}
-    </div>
-    <div class="feedback-part" data-section="reading">
-      <div class="feedback-part-header reading">📖 Reading A — Complete the sentences (${autoRA} / 7 pts)</div>
-      ${raHTML}
-    </div>
-    <div class="feedback-part" data-section="reading">
-      <div class="feedback-part-header reading">📖 Reading B — Matching (${autoRB} / 5 pts)</div>
-      ${rbHTML}
-    </div>
-    <div class="feedback-part" data-section="writing">
-      <div class="feedback-part-header writing">✍️ Writing — Rubric scores</div>
-      ${wHTML}
-    </div>`;
+  ['rub1','rub2','rub3','rub4'].forEach(name=>{const val=parseFloat(getRadio(name))||0;const info=rubricLabels[name];wHTML+='<div class="feedback-item"><div class="fi-label">'+info.label+' <span class="tag info-tag">'+(val||'—')+' / '+info.max+' pts</span></div></div>';});
+  wHTML+='<div class="feedback-item"><strong>Writing total: '+autoWriting.toFixed(1)+' / 12 pts</strong></div>';
+  document.getElementById('feedbackContent').innerHTML='<div class="feedback-part" data-section="listening"><div class="feedback-part-header listening">Listening A — Conversations ('+autoLA+' / 6 pts)</div>'+laHTML+'</div><div class="feedback-part" data-section="listening"><div class="feedback-part-header listening">Listening B — Binary choice ('+autoLB+' / 6 pts)</div>'+lbHTML+'</div><div class="feedback-part" data-section="reading"><div class="feedback-part-header reading">Reading A — Complete the sentences ('+autoRA+' / 7 pts)</div>'+raHTML+'</div><div class="feedback-part" data-section="reading"><div class="feedback-part-header reading">Reading B — Matching ('+autoRB+' / 5 pts)</div>'+rbHTML+'</div><div class="feedback-part" data-section="writing"><div class="feedback-part-header writing">Writing — Rubric scores</div>'+wHTML+'</div>';
 }
-
-// ── FILTER TABS ──
-function filterFeedback(filter, event) {
+function filterFeedback(filter,event){
   document.querySelectorAll('.filter-tab').forEach(t=>t.classList.remove('active'));
-  event.target.classList.add('active');
-  document.querySelectorAll('.feedback-part').forEach(part=>{
-    if(filter==='all'){part.style.display='block';return;}
-    // Section filter
-    if(['listening','reading','writing'].includes(filter)){
-      part.style.display=part.dataset.section===filter?'block':'none';return;
-    }
-    // Correct/incorrect filter — hide parts with no matching items
-    if(filter==='correct'||filter==='incorrect'){
-      const items=part.querySelectorAll('.feedback-item[data-result]');
-      let hasMatch=false;
-      items.forEach(item=>{
-        const match=item.dataset.result===filter;
-        item.style.display=match?'block':'none';
-        if(match) hasMatch=true;
-      });
-      part.style.display=hasMatch?'block':'none';
-    }
-  });
+  if(event&&event.target)event.target.classList.add('active');
+  const parts=document.querySelectorAll('.feedback-part');
+  const items=document.querySelectorAll('.feedback-item');
+  if(filter==='correct'||filter==='incorrect'){
+    parts.forEach(p=>p.style.display='block');
+    items.forEach(item=>{const isCorrect=item.classList.contains('fb-correct');item.style.display=(filter==='correct'?isCorrect:!isCorrect)?'':'none';});
+    parts.forEach(p=>{const visible=[...p.querySelectorAll('.feedback-item')].some(i=>i.style.display!=='none');p.style.display=visible?'block':'none';});
+  }else{
+    items.forEach(i=>i.style.display='');
+    parts.forEach(p=>{p.style.display=(filter==='all'||p.dataset.section===filter)?'block':'none';});
+  }
 }
-
-// ── GEMINI WRITING PROMPT ──
-function copyForGemini() {
+function copyForGemini(){
   const text=g('writingText').trim();
-  if(!text){document.getElementById('geminiWarnWriting').style.display='block';return;}
-  document.getElementById('geminiWarnWriting').style.display='none';
-
-  const geminiText=`Eres un profesor experto en inglés como lengua extranjera para nivel A1 (CEFR).
-
-Un estudiante de nivel A1 ha escrito sobre dos personas que conoce.
-La tarea pide describir a dos personas con trabajo usando al menos 40 palabras en total (20 por persona).
-
-RESPUESTA DEL ESTUDIANTE:
-"${text}"
-
-Evalúa la respuesta usando la siguiente rúbrica (todo en español, excepto citas del texto del estudiante):
-
-CRITERIO 1 — Coherencia y extensión (máx. 4 pts):
-- 4 pts: 40+ palabras, 5+ ideas completas y coherentes con la tarea
-- 3,2 pts: 30–39 palabras, 4 ideas completas
-- 2,4 pts: 20–29 palabras, 3 ideas completas
-- 1,2 pts: 10–19 palabras, 2 ideas completas
-- 0 pts: menos de 10 palabras o sin respuesta
-
-CRITERIO 2 — Vocabulario (máx. 3 pts):
-- 3 pts: 8+ palabras del vocabulario estudiado, en contexto adecuado
-- 2,4 pts: 6–7 palabras
-- 1,8 pts: 5 palabras
-- 0,9 pts: 3–4 palabras
-- 0 pts: menos de 3 palabras o sin respuesta
-
-CRITERIO 3 — Gramática (máx. 3 pts):
-- 3 pts: sin errores gramaticales
-- 2,4 pts: 2–3 errores que no afectan la comprensión
-- 1,8 pts: 4–5 errores, texto aún comprensible
-- 0,9 pts: 6 errores que limitan la claridad
-- 0 pts: 7+ errores o sin respuesta
-
-CRITERIO 4 — Ortografía (máx. 2 pts):
-- 2 pts: 1–2 errores que no afectan el mensaje
-- 1,6 pts: 3–4 errores
-- 1,2 pts: 5–6 errores
-- 0,6 pts: 7–9 errores
-- 0 pts: 10+ errores o sin respuesta
-
-IMPORTANTE: Los estudiantes A1 SIEMPRE cometen errores de artículo (a/an/the) y spelling básico — no penalices con el nivel máximo de severidad. Acepta errores menores que no impiden la comprensión.
-
-Responde SIEMPRE en este formato exacto, con dos bloques separados:
-
-BLOQUE 1 — EVALUACIÓN:
-Criterio 1 (Coherencia y extensión): [puntaje] — [justificación breve, 1-2 oraciones]
-Criterio 2 (Vocabulario): [puntaje] — [justificación breve]
-Criterio 3 (Gramática): [puntaje] — [justificación breve, cita el error si corresponde]
-Criterio 4 (Ortografía): [puntaje] — [justificación breve]
-
-BLOQUE 2 — PUNTAJES PARA INGRESAR EN EL MOCK TEST:
-┌─────────────────────────────────────────────────┐
-│ Coherencia y extensión (máx. 4 pts): [puntaje]  │
-│ Vocabulario (máx. 3 pts): [puntaje]             │
-│ Gramática (máx. 3 pts): [puntaje]               │
-│ Ortografía (máx. 2 pts): [puntaje]              │
-│ TOTAL: [suma] / 12 pts                          │
-└─────────────────────────────────────────────────┘
-Ingresa cada puntaje del Bloque 2 en el campo correspondiente del mock test.`;
-
-  copyToClipboard(geminiText);
-  showGeminiModal();
+  if(!text){document.getElementById('geminiWarn').style.display='block';return;}
+  document.getElementById('geminiWarn').style.display='none';
+  const prompt="Eres un profesor experto en ingles como lengua extranjera para nivel A1 (CEFR).\n\nUn estudiante de nivel A1 recibio esta tarea:\n\"Think about two people you know and write about them. Use at least 40 words in total (about 20 per person). Guide questions: What's his/her occupation? / Where does he/she work? / What time does he/she start and finish work? / Does he/she have lunch at work? / Does he/she like his/her job?\"\n\nEl texto del estudiante es:\n\""+text+"\"\n\n---\nENTREGA TU RESPUESTA EN DOS BLOQUES SEPARADOS Y CLARAMENTE MARCADOS. NO mezcles el contenido de los bloques.\n---\n\nBLOQUE 1 — EVALUACION\nEntrega todo en espanol, excepto los errores que se muestran en ingles.\n\n1. ADVERTENCIA DE AUTENTICIDAD\nIndica si el texto muestra senales de uso de IA o traductor: vocabulario demasiado avanzado para A1, ausencia de errores tipicos de hablantes de espanol, conectores muy sofisticados, o coherencia inusualmente alta. Si no hay senales, escribe: \"No se detectan senales de uso de IA o traductor.\"\n\n2. COMENTARIO GENERAL\nUna evaluacion general del texto en 3 o 4 oraciones.\n\n3. EVALUACION POR CRITERIO\nCRITERIO 1 — Coherencia y extension (max. 4 pts):\n- Totalmente Logrado (4 pts): 40+ palabras, 5+ ideas completas y coherentes.\n- Logrado (3,2 pts): 30-39 palabras, al menos 4 ideas completas.\n- Parcialmente Logrado (2,4 pts): 20-29 palabras, al menos 3 ideas completas.\n- Insuficientemente Logrado (1,2 pts): 10-19 palabras, 2 ideas completas.\n- No Logrado (0 pts): menos de 10 palabras o sin respuesta.\n\nCRITERIO 2 — Vocabulario (max. 3 pts):\n- Totalmente Logrado (3 pts): 8+ palabras del vocabulario estudiado en contexto adecuado.\n- Logrado (2,4 pts): 6-7 palabras.\n- Parcialmente Logrado (1,8 pts): 5 palabras.\n- Insuficientemente Logrado (0,9 pts): 3-4 palabras.\n- No Logrado (0 pts): menos de 3 palabras o sin respuesta.\n\nCRITERIO 3 — Gramatica (max. 3 pts):\n- Totalmente Logrado (3 pts): sin errores gramaticales.\n- Logrado (2,4 pts): 2-3 errores que no afectan la comprension.\n- Parcialmente Logrado (1,8 pts): 4-5 errores, texto aun comprensible.\n- Insuficientemente Logrado (0,9 pts): 6 errores que limitan la claridad.\n- No Logrado (0 pts): 7+ errores o sin respuesta.\n\nCRITERIO 4 — Ortografia (max. 2 pts):\n- Totalmente Logrado (2 pts): 1-2 errores de ortografia.\n- Logrado (1,6 pts): 3-4 errores.\n- Parcialmente Logrado (1,2 pts): 5-6 errores.\n- Insuficientemente Logrado (0,6 pts): 7-9 errores.\n- No Logrado (0 pts): 10+ errores o sin respuesta.\n\n4. ERRORES ESPECIFICOS\nLista los errores encontrados con su correccion. Ejemplo:\n   x \"He have a dog\" -> \"He has a dog\"\nSi no hay errores, escribe: \"No se encontraron errores gramaticales u ortograficos.\"\n\n5. SUGERENCIAS DE MEJORA\n2 o 3 sugerencias concretas para mejorar el texto.\n\n6. MENSAJE DE CIERRE\nUna frase breve de motivacion para el estudiante.\n\n---\n\nBLOQUE 2 — RESUMEN DE PUNTAJE\nCompleta esta tabla con los puntajes sugeridos en el Bloque 1:\n\nCriterio 1 — Coherencia y extension: ___ / 4 pts\nCriterio 2 — Vocabulario:            ___ / 3 pts\nCriterio 3 — Gramatica:              ___ / 3 pts\nCriterio 4 — Ortografia:             ___ / 2 pts\n-------------------------------------------------\nTotal sugerido:                       ___ / 12 pts\n\nIngresa cada puntaje en la rubrica del mock test.";
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(prompt).then(()=>{document.getElementById('geminiModal').classList.add('active');}).catch(()=>fallbackCopy(prompt));}else{fallbackCopy(prompt);}
 }
-
-function copyToClipboard(text) {
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).catch(()=>fallbackCopy(text));
-  } else { fallbackCopy(text); }
-}
-function fallbackCopy(text) {
-  const ta=document.createElement('textarea');
-  ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
-  document.body.appendChild(ta); ta.focus(); ta.select();
-  try{document.execCommand('copy');}catch(e){}
-  document.body.removeChild(ta);
-}
-function showGeminiModal(){document.getElementById('geminiModal').classList.add('active');}
-
-// ── INIT ──
-window.addEventListener('load',()=>{
-  const raw=localStorage.getItem(SAVE_KEY);
-  if(raw) document.getElementById('savedBanner').style.display='flex';
-  updateWordCount();
-});
+function fallbackCopy(text){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.focus();ta.select();try{document.execCommand('copy');document.getElementById('geminiModal').classList.add('active');}catch(e){}document.body.removeChild(ta);}
+window.addEventListener('load',()=>{loadSaved();updateWordCount();updateProgress();updateRubric();});
 </script>
 </body>
 </html>
